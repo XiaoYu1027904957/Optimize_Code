@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+    android:layout_width="match_parent"
+    android:layout_height="100dp"
+    android:orientation="horizontal">
+
+    <TextView
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:drawableTop="@drawable/copy_normal"
+        android:gravity="center_horizontal"
+        android:text="赋值链接" />
+
+    <TextView
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:drawableTop="@drawable/reprint_normal"
+        android:gravity="center_horizontal"
+        android:text="转载" />
+
+    <TextView
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:drawableTop="@drawable/collect_normal"
+        android:gravity="center_horizontal"
+        android:text="收藏" />
+
+    <TextView
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:drawableTop="@drawable/report_normal"
+        android:gravity="center_horizontal"
+        android:text="举报" />
+</LinearLayout>

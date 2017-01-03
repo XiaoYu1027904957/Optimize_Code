@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:lines="2"
+        android:paddingLeft="70dp"
+        android:paddingRight="70dp"
+        android:paddingTop="80dp"
+        android:text="快快登陆吧，关注百思最新牛人好友动态让你过把瘾儿，噢耶！"
+        android:textSize="16sp" />
+
+    <ImageView
+        android:id="@+id/image"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:layout_below="@+id/text"
+        android:layout_centerHorizontal="true"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="15dp"
+        android:background="@drawable/follow_prompt_login_icon" />
+
+    <Button
+        android:id="@+id/btn_fllow_1"
+        android:layout_width="80dp"
+        android:layout_height="45dp"
+        android:layout_below="@+id/image"
+        android:layout_margin="70dp"
+        android:background="@drawable/btn_selector"
+        android:text="注册" />
+
+    <Button
+        android:id="@+id/login_in"
+        android:layout_width="80dp"
+        android:layout_height="45dp"
+        android:layout_below="@+id/image"
+        android:layout_marginTop="70dp"
+        android:layout_toRightOf="@+id/btn_fllow_1"
+        android:background="@drawable/btn_selector"
+        android:text="登录" />
+
+
+</RelativeLayout>

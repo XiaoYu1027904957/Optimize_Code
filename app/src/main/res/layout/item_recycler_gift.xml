@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:id="@+id/rl_item"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="5dp">
+
+        <ImageView
+            android:id="@+id/icon_imageView"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_margin="5dp"
+            android:layout_marginLeft="5dp" />
+
+        <TextView
+            android:textColor="#3344bb"
+            android:id="@+id/title_bar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/icon_imageView"
+            android:text="音乐收藏馆[青春百思]" />
+
+        <TextView
+            android:id="@+id/recycler_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/title_bar"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="3dp"
+            android:layout_toRightOf="@id/icon_imageView"
+            android:text="2016-12-29 09:09"
+            android:textSize="10sp" />
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/text_intriduce"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/rl_item"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:text="本兮，缅怀在一另一个世界的你，缅怀我们逝去的非主流岁月!"
+        android:textSize="20sp" />
+    <!--<pl.droidsonroids.gif.GifImageView-->
+        <!--android:id="@+id/iv_image_gif"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="200dp"-->
+        <!--android:layout_margin="10dp"-->
+        <!--android:layout_marginTop="5dp"/>-->
+
+
+    <ImageView
+        android:id="@+id/image"
+        android:layout_width="match_parent"
+        android:layout_height="180dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp" />
+
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center">
+
+        <TextView
+            android:id="@+id/text_zan"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:drawableLeft="@drawable/ding_not_clicked"
+            android:drawablePadding="5dp"
+            android:paddingLeft="20dp"
+            android:text="88" />
+
+        <TextView
+            android:id="@+id/text_sun"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:drawableLeft="@drawable/cai_not_clicked"
+            android:drawablePadding="5dp"
+            android:paddingLeft="20dp"
+            android:text="34" />
+
+        <TextView
+            android:id="@+id/text_zhuan"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:drawableLeft="@drawable/forward"
+            android:drawablePadding="5dp"
+            android:paddingLeft="20dp"
+            android:text="45" />
+
+        <TextView
+            android:id="@+id/text_news"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:drawableLeft="@drawable/commend"
+            android:drawablePadding="5dp"
+            android:paddingLeft="20dp"
+            android:text="56" />
+    </LinearLayout>
+    <LinearLayout
+        android:background="@drawable/comment_shape"
+        android:orientation="vertical"
+        android:id="@+id/layout_commont"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+
+
+</LinearLayout>

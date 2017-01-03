@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_bai_jia_jie"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".app.BaiJiaJieActivity">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="#ff0000">
+
+        <TextView
+            android:id="@+id/back_mine"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="10dp"
+            android:layout_weight="1"
+            android:drawableLeft="@drawable/collect_left_button_w"
+            android:gravity="center"
+            android:text="返回"
+            android:textColor="#ffffff" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="3"
+            android:gravity="center"
+            android:text="败家姐"
+            android:textColor="#ffffff"
+            android:textSize="20dp" />
+
+        <TextView
+            android:id="@+id/share_mine"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="分享"
+            android:textColor="#ffffff" />
+    </LinearLayout>
+
+    <WebView
+        android:id="@+id/webView_mine"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
+</LinearLayout>
+
+

@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_login"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/login_bg"
+    tools:context=".app.LoginActivity">
+
+    <TextView
+        android:id="@+id/login_cancel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="15dp"
+        android:text="取消"
+        android:textSize="18sp" />
+
+    <ImageView
+        android:id="@+id/show_image"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="100dp"
+        android:background="@drawable/audit_post_cai" />
+
+    <Button
+        android:id="@+id/wx_login"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="150dp"
+        android:layout_marginLeft="40dp"
+        android:layout_marginRight="40dp"
+        android:background="@drawable/weixin_selector"
+        android:text="微信登录"
+        android:textSize="16sp" />
+
+    <Button
+        android:id="@+id/qq_login"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="100dp"
+        android:layout_marginLeft="40dp"
+        android:layout_marginRight="40dp"
+        android:background="@drawable/qq_selector"
+        android:text="QQ登录"
+        android:textSize="16sp" />
+
+    <TextView
+        android:id="@+id/login_other"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="70dp"
+        android:layout_marginLeft="150dp"
+        android:text="其他登录方式" />
+
+</RelativeLayout>

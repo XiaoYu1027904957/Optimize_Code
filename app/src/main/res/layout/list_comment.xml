@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:id="@+id/comment_icon"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="5dp"
+        android:background="@drawable/head_portrait" />
+
+    <TextView
+        android:id="@+id/user_level"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/comment_icon"
+        android:layout_marginLeft="5dp"
+        android:text="haha" />
+
+    <TextView
+        android:id="@+id/sex"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="20dp"
+        android:layout_toRightOf="@+id/comment_icon" />
+
+    <TextView
+        android:id="@+id/comment_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="4dp"
+        android:layout_marginTop="20dp"
+        android:layout_toRightOf="@+id/sex"
+        android:text="帅哥看过来" />
+    <TextView
+        android:id="@+id/comment_content"
+        android:layout_below="@+id/comment_name"
+        android:text="啦啦"
+        android:layout_toRightOf="@+id/sex"
+        android:layout_marginLeft="4dp"
+        android:layout_marginTop="5dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <ImageView
+        android:id="@+id/comment_zan"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="100dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/ding_not_clicked" />
+
+    <TextView
+        android:id="@+id/edit_zan"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="75dp"
+        android:layout_marginTop="20dp"
+        android:text="100" />
+
+    <ImageView
+        android:id="@+id/comment_cai"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="50dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/shenhe_cai_pic" />
+
+    <TextView
+        android:id="@+id/edit_cai"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="25dp"
+        android:layout_marginTop="20dp"
+        android:text="20" />
+</RelativeLayout>

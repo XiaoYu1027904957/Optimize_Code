@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:id="@+id/rl_item"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="5dp">
+
+        <ImageView
+            android:id="@+id/icon_imageView"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_margin="5dp"
+            android:layout_marginLeft="5dp" />
+
+        <TextView
+            android:id="@+id/title_bar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/icon_imageView"
+            android:text="音乐收藏馆[青春百思]"
+            android:textColor="#3344bb" />
+
+
+        <TextView
+            android:id="@+id/recycler_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/title_bar"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="3dp"
+            android:layout_toRightOf="@id/icon_imageView"
+            android:text="2016-12-29 09:09"
+            android:textSize="10sp" />
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/text_intriduce"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/rl_item"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:text="本兮，缅怀在一另一个世界的你，缅怀我们逝去的非主流岁月!"
+        android:textSize="20sp" />
+
+    <RelativeLayout
+        android:id="@+id/rl_1"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:layout_below="@+id/text_intriduce">
+
+        <fm.jiecao.jcvideoplayer_lib.JCVideoPlayer
+            android:id="@+id/videocontroller1"
+            android:layout_width="match_parent"
+            android:layout_height="200dp" />
+
+        <TextView
+            android:textColor="#44000000"
+            android:id="@+id/video_duration"
+            android:layout_width="80dp"
+            android:layout_height="20dp"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginBottom="5dp"
+            android:layout_marginRight="5dp" />
+
+
+    </RelativeLayout>
+
+
+    <LinearLayout
+        android:id="@+id/text_pinglun"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/rl_1"
+        android:layout_gravity="center">
+
+        <TextView
+            android:id="@+id/text_zan"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:drawableLeft="@drawable/ding_not_clicked"
+            android:drawablePadding="5dp"
+            android:paddingLeft="20dp"
+            android:text="88" />
+
+        <TextView
+            android:id="@+id/text_sun"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:drawableLeft="@drawable/cai_not_clicked"
+            android:drawablePadding="5dp"
+            android:paddingLeft="20dp"
+            android:text="34" />
+
+        <TextView
+            android:id="@+id/text_zhuan"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:drawableLeft="@drawable/forward"
+            android:drawablePadding="5dp"
+            android:paddingLeft="20dp"
+            android:text="45" />
+
+        <TextView
+            android:id="@+id/text_news"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:drawableLeft="@drawable/commend"
+            android:drawablePadding="5dp"
+            android:paddingLeft="20dp"
+            android:text="56" />
+    </LinearLayout>
+
+    <LinearLayout
+
+        android:background="@drawable/comment_shape"
+        android:id="@+id/layout_commont"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/text_pinglun"
+        android:orientation="vertical" />
+
+
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/show_info"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:visibility="gone"
+        tools:context="com.xiaoyu.app.ShareInfo">
+
+        <Button
+            android:id="@+id/button_share"
+            android:layout_width="match_parent"
+            android:layout_height="300dp"
+            android:background="#88000000" />
+
+        <include
+            android:id="@+id/showone"
+            layout="@layout/layout_tabshowone"></include>
+
+        <include
+            android:id="@+id/showone"
+            layout="@layout/layout_tabshowtwo"></include>
+
+        <include
+            android:id="@+id/showone"
+            layout="@layout/layout_tabshowthree"></include>
+
+    </LinearLayout>
+
+
+</RelativeLayout>
