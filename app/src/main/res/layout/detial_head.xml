@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+        <RelativeLayout
+            android:layout_below="@+id/pinglun"
+            android:id="@+id/rl_item"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="5dp">
+
+            <TextView
+                android:id="@+id/title_bar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="60dp"
+                android:text="音乐收藏馆[青春百思]"
+                android:textColor="#3344bb" />
+
+
+            <TextView
+                android:id="@+id/recycler_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/title_bar"
+                android:layout_marginTop="3dp"
+                android:layout_marginLeft="60dp"
+                android:text="2016-12-29 09:09"
+                android:textSize="10sp" />
+
+            <ImageView
+                android:id="@+id/icon_mine"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_alignParentLeft="true"
+                android:layout_marginLeft="17dp"
+                android:background="@drawable/head_portrait" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/rl_1"
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:layout_below="@+id/rl_item">
+
+            <fm.jiecao.jcvideoplayer_lib.JCVideoPlayer
+                android:id="@+id/videocontroller1"
+                android:layout_width="match_parent"
+                android:layout_height="200dp" />
+
+            <TextView
+                android:id="@+id/video_duration"
+                android:layout_width="80dp"
+                android:layout_height="20dp"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentRight="true"
+                android:layout_marginBottom="5dp"
+                android:layout_marginRight="5dp"
+                android:textColor="#44000000" />
+
+
+        </RelativeLayout>
+
+
+        <LinearLayout
+            android:id="@+id/text_pinglun"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/rl_1"
+            android:layout_gravity="center">
+
+            <TextView
+                android:id="@+id/text_zan"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:drawableLeft="@drawable/ding_not_clicked"
+                android:drawablePadding="5dp"
+                android:paddingLeft="20dp"
+                android:text="88" />
+
+            <TextView
+                android:id="@+id/text_sun"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:drawableLeft="@drawable/cai_not_clicked"
+                android:drawablePadding="5dp"
+                android:paddingLeft="20dp"
+                android:text="34" />
+
+            <TextView
+                android:id="@+id/text_zhuan"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:drawableLeft="@drawable/forward"
+                android:drawablePadding="5dp"
+                android:paddingLeft="20dp"
+                android:text="45" />
+
+            <TextView
+                android:id="@+id/text_news"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:drawableLeft="@drawable/commend"
+                android:drawablePadding="5dp"
+                android:paddingLeft="20dp"
+                android:text="56" />
+        </LinearLayout>
+
+</RelativeLayout>

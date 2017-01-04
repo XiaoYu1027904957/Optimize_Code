@@ -13,7 +13,7 @@ import com.xiaoyu.rewritebaisi.R;
 import com.xiaoyu.rewritebaisi.base.GetNet;
 import com.xiaoyu.rewritebaisi.base.OnGetListener;
 import com.xiaoyu.rewritebaisi.constantUtils.ContantUtils;
-import com.xiaoyu.rewritebaisi.essence.adapter.RecyclerDetialImageAdapter;
+import com.xiaoyu.rewritebaisi.essence.adapter.RecyclerDetialAdapter;
 import com.xiaoyu.rewritebaisi.essence.bean.DetialsBean;
 
 import java.util.List;
@@ -22,12 +22,13 @@ import butterknife.ButterKnife;
 import butterknife.InjectView;
 import butterknife.OnClick;
 
-public class DetialImageActivity extends AppCompatActivity {
+public class DetialShowActivity extends AppCompatActivity {
+
     @InjectView(R.id.recycler)
     RecyclerView recycler;
     @InjectView(R.id.rank_back)
     TextView rankBack;
-    private RecyclerDetialImageAdapter adapter;
+    private RecyclerDetialAdapter adapter;
     private String position;
     List<DetialsBean.NormalBean.ListBeanX> list;
     private String url;
@@ -46,7 +47,8 @@ public class DetialImageActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
         position = intent.getStringExtra("position");
-        image = intent.getStringExtra("imageurl");
+        url = intent.getStringExtra("url");
+        image = intent.getStringExtra("image");
         getDataFromNet();
     }
 
@@ -70,11 +72,12 @@ public class DetialImageActivity extends AppCompatActivity {
         DetialsBean detialsBean = processData(json);
         list = detialsBean.getNormal().getList();
         if (json != null) {
-            adapter = new RecyclerDetialImageAdapter(this, list, image);
+            adapter = new RecyclerDetialAdapter(this, list, url, image);
             recycler.setAdapter(adapter);
-            LinearLayoutManager manager = new LinearLayoutManager(DetialImageActivity.this);
+            LinearLayoutManager manager = new LinearLayoutManager(DetialShowActivity.this);
             recycler.setLayoutManager(manager);
             recycler.scrollToPosition(1);
+
         }
 
     }
@@ -84,6 +87,7 @@ public class DetialImageActivity extends AppCompatActivity {
     }
 
     @OnClick(R.id.rank_back)
-    public void onClick() {finish();
+    public void onClick() {
+        finish();
     }
 }

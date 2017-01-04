@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="wrap_content">
 
     <ImageView
         android:id="@+id/comment_icon"
@@ -37,13 +37,25 @@
         android:text="帅哥看过来" />
     <TextView
         android:id="@+id/comment_content"
-        android:layout_below="@+id/comment_name"
+        android:layout_below="@+id/Reply"
         android:text="啦啦"
         android:layout_toRightOf="@+id/sex"
         android:layout_marginLeft="4dp"
         android:layout_marginTop="5dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
+    <LinearLayout
+
+        android:layout_toRightOf="@id/user_level"
+        android:background="@drawable/joke_to_pic_wx_comment_bg"
+        android:layout_marginLeft="40dp"
+        android:layout_below="@+id/comment_name"
+        android:orientation="vertical"
+        android:id="@+id/Reply"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        />
 
     <ImageView
         android:id="@+id/comment_zan"

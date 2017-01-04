@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="wrap_content">
 
     <RelativeLayout
         android:id="@+id/rl_item"
@@ -122,7 +122,7 @@
 
     <LinearLayout
 
-        android:background="@drawable/comment_shape"
+        android:background="@drawable/joke_to_pic_wx_comment_bg"
         android:id="@+id/layout_commont"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -148,15 +148,15 @@
 
         <include
             android:id="@+id/showone"
-            layout="@layout/layout_tabshowone"></include>
+            layout="@layout/layout_tabshowone"/>
 
         <include
             android:id="@+id/showone"
-            layout="@layout/layout_tabshowtwo"></include>
+            layout="@layout/layout_tabshowtwo"/>
 
         <include
             android:id="@+id/showone"
-            layout="@layout/layout_tabshowthree"></include>
+            layout="@layout/layout_tabshowthree"/>
 
     </LinearLayout>
 

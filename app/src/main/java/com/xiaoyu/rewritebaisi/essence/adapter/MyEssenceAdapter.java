@@ -47,7 +47,6 @@ public class MyEssenceAdapter extends FragmentPagerAdapter {
 
     @Override
     public CharSequence getPageTitle(int position) {
-
         return datas.get(position).getName();
     }
 }

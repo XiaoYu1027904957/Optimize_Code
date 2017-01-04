@@ -16,6 +16,8 @@ import com.xiaoyu.rewritebaisi.base.OnGetListener;
 import com.xiaoyu.rewritebaisi.base.RecyclerViewAdapter;
 import com.xiaoyu.rewritebaisi.common.CommonBean;
 import com.xiaoyu.rewritebaisi.constantUtils.ContantUtils;
+import com.xiaoyu.rewritebaisi.newpost.adapter.RecyclerViewAudioAdapter;
+import com.xiaoyu.rewritebaisi.newpost.bean.AudioBeann;
 
 import java.util.List;
 
@@ -34,6 +36,8 @@ public class NewsFragment extends BaseFragment {
     MaterialRefreshLayout refresh;
     private RecyclerViewAdapter adapter;
     private List<CommonBean.ListBean> list;
+    private List<AudioBeann.ListBean> datas;
+    private RecyclerViewAudioAdapter adapters;
 
     public NewsFragment(int position) {
         this.position = position;
@@ -191,8 +195,8 @@ public class NewsFragment extends BaseFragment {
                 GetNet.get(ContantUtils.NEWSPOST_VOICE, null, new OnGetListener() {
                     @Override
                     public void onSuccess(String json) {
-                        Log.e("TAG", "联网成功");
-                        parseData(json);
+                        Log.e("TAG", "联网成功------------------------->voice");
+                        parseData1(json);
                     }
 
                     @Override
@@ -223,10 +227,29 @@ public class NewsFragment extends BaseFragment {
 
     }
 
+    private void parseData1(String json) {
+        AudioBeann audioBeann = processData1(json);
+          datas = audioBeann.getList();
+        if (json != null) {
+//        设置适配器
+            adapters = new RecyclerViewAudioAdapter(mContext, datas);
+            adapters.notifyDataSetChanged();
+            recycler.setAdapter(adapters);
+            LinearLayoutManager manger = new LinearLayoutManager(mContext);
+            recycler.setLayoutManager(manger);
+
+
+        }
+    }
+
+    private AudioBeann processData1(String json) {
+        return  JSON.parseObject(json, AudioBeann.class);
+    }
+
     private void parseData(String json) {
         CommonBean commonBean = processData(json);
         list = commonBean.getList();
-        if (list != null) {
+        if (json != null) {
 //        设置适配器
             adapter = new RecyclerViewAdapter(mContext, list);
             adapter.notifyDataSetChanged();

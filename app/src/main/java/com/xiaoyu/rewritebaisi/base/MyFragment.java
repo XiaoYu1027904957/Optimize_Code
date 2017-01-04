@@ -36,7 +36,7 @@ public class MyFragment extends BaseFragment {
     }
 
     @Override
-    protected View initView() {
+    public View initView() {
         View view = View.inflate(mContext, R.layout.item_recycle, null);
         ButterKnife.inject(this, view);
         refresh.setSunStyle(true);
@@ -50,7 +50,7 @@ public class MyFragment extends BaseFragment {
         initMaterialRefreash();
     }
 
-    private void initMaterialRefreash() {
+    public void initMaterialRefreash() {
         refresh.setMaterialRefreshListener(new MaterialRefreshListener() {
             @Override
             public void onRefresh(final MaterialRefreshLayout materialRefreshLayout) {

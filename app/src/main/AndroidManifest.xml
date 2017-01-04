@@ -34,10 +34,9 @@
         <activity android:name=".app.BaiJiaJieActivity" />
         <activity android:name=".detials.DetialActivity" />
         <activity android:name=".detials.DetialImageActivity" />
-        <activity android:name=".detials.DetialGifActivity" />
         <activity android:name=".detials.DetialTextActivity" />
-        <activity android:name=".detials.DetialHtmlActivity" />
-        <activity android:name=".app.PhotoShow"></activity>
+        <activity android:name=".app.PhotoShow" />
+        <activity android:name=".detials.DetialShowActivity"></activity>
     </application>
 
 </manifest>

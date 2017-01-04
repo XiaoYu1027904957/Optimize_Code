@@ -200,7 +200,7 @@ public class DetialActivity extends AppCompatActivity {
             CommentBean.NormalBean.ListBeanX listBeanX = list.get(position);
 
             Glide.with(mContext).load(listBeanX.getUser().getProfile_image()).transform(new GlideCircleTransform(DetialActivity.this)).into(holder.commentIcon);
-            holder.userLevel.setText(listBeanX.getUser().getTotal_cmt_like_count());
+//            holder.userLevel.setText(listBeanX.getUser().getTotal_cmt_like_count());
             holder.sex.setText(listBeanX.getUser().getSex());
             holder.name.setText(listBeanX.getUser().getUsername());
             holder.content.setText(listBeanX.getContent());
@@ -212,10 +212,10 @@ public class DetialActivity extends AppCompatActivity {
     }
 
     static class ViewHolder {
-        //        @InjectView(R.id.comment_icon)
+        @InjectView(R.id.comment_icon)
         ImageView commentIcon;
-        @InjectView(R.id.user_level)
-        TextView userLevel;
+//        @InjectView(R.id.user_lev1el)
+//        TextView userLevel;
         @InjectView(R.id.sex)
         TextView sex;
         @InjectView(R.id.comment_zan)
