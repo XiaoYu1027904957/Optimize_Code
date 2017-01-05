@@ -17,6 +17,7 @@ import android.widget.FrameLayout;
 import android.widget.RadioGroup;
 
 import com.xiaoyu.rewritebaisi.app.ShowAnimationActivity;
+import com.xiaoyu.rewritebaisi.app.WeiXinActivity;
 import com.xiaoyu.rewritebaisi.essence.EssenceFragment;
 import com.xiaoyu.rewritebaisi.follow.FollowFragment;
 import com.xiaoyu.rewritebaisi.mine.MineFragment;
@@ -48,7 +49,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         ButterKnife.inject(this);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        mContext =MainActivity.this;
+        mContext = MainActivity.this;
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -108,10 +109,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                         position = 1;
                         break;
                     case R.id.main_rb_3:
-                        Intent intent = new Intent(MainActivity.this,ShowAnimationActivity.class);
-                        intent.setClassName(mContext,"com.xiaoyu.rewritebaisi.app.ShowAnimationActivity");
-                         mContext.startActivity(intent);
-                        MainActivity.this.overridePendingTransition(R.anim.activity_open,0);
+                        Intent intent = new Intent(MainActivity.this, ShowAnimationActivity.class);
+                        intent.setClassName(mContext, "com.xiaoyu.rewritebaisi.app.ShowAnimationActivity");
+                        mContext.startActivity(intent);
+                        MainActivity.this.overridePendingTransition(R.anim.activity_open, 0);
                         break;
                     case R.id.main_rb_4:
                         position = 2;
@@ -199,6 +200,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
+            Intent intent = new Intent(this, WeiXinActivity.class);
+            startActivity(intent);
             return true;
         }
 
@@ -230,8 +233,5 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         return true;
     }
 
-    public void getDataFromNet() {
 
-
-    }
 }

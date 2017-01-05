@@ -238,7 +238,7 @@ public class MyFragment extends BaseFragment {
         list = commonBean.getList();
         if (list != null) {
 //        设置适配器
-            adapter = new RecyclerViewAdapter(mContext, list);
+            adapter = new RecyclerViewAdapter(mContext, list,commonBean);
             adapter.notifyDataSetChanged();
             recycler.setAdapter(adapter);
             LinearLayoutManager manger = new LinearLayoutManager(mContext);

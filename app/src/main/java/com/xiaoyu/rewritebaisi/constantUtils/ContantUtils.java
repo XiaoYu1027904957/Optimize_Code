@@ -42,7 +42,7 @@ public class ContantUtils {
     public static final String NEWSPOST_ALL = "http://s.budejie.com/topic/list/zuixin/1/budejie-android-6.6.3/0-20.json";
     //   新帖的视频
     public static final String NEWSPOST_VIDEO = "http://s.budejie.com/topic/list/zuixin/41/budejie-android-6.6.3/0-20.json";
-    //    新帖的土图片
+    //    新帖的图片
     public static final String NEWSPOST_PICTURE = "http://s.budejie.com/topic/list/zuixin/10/budejie-android-6.6.3/0-20.json";
     //    新帖的段子、
     public static final String NEWSPOST_FIELD = "http://s.budejie.com/topic/list/zuixin/29/budejie-android-6.6.3/0-20.json";

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_er_wei_ma"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".app.WeiXinActivity">
+    <Button
+        android:id="@+id/btn_shengcheng"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="#ffeeaa"
+        android:text="生成二维码" />
+    <Button
+        android:id="@+id/btn_saomiao"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:background="#ffeeaa"
+        android:text="扫描二维码" />
+    <Button
+        android:id="@+id/btn_Image"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="150dp"
+        android:background="#ffeeaa"
+        android:text="从相册选取图片" />
+
+    <EditText
+
+        android:id="@+id/edittext"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:hint="请输入要生成二维码的网址" />
+
+
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="300dp"
+        android:layout_height="300dp"
+        android:layout_centerInParent="true"
+        android:visibility="gone" />
+
+</RelativeLayout>
+

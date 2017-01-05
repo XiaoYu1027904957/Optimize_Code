@@ -18,6 +18,7 @@ public class CommonBean implements Serializable {
     private InfoBean info;
     private List<ListBean> list;
 
+
     public InfoBean getInfo() {
         return info;
     }
@@ -35,6 +36,8 @@ public class CommonBean implements Serializable {
     }
 
     public static class InfoBean implements Serializable{
+
+
         /**
          * count : 4427
          * np : 1483448102
@@ -61,6 +64,7 @@ public class CommonBean implements Serializable {
     }
 
     public static class ListBean implements Serializable {
+
         /**
          * status : 4
          * comment : 16
@@ -98,6 +102,8 @@ public class CommonBean implements Serializable {
         private GifBean gif;
         private List<TopCommentsBean> top_comments;
         private List<TagsBean> tags;
+        private HtmlBean htmlBean;
+
 
         public int getStatus() {
             return status;
@@ -233,6 +239,12 @@ public class CommonBean implements Serializable {
 
         public void setTags(List<TagsBean> tags) {
             this.tags = tags;
+        }
+        public HtmlBean getHtml(){
+            return htmlBean;
+        }
+        public void setHtml(HtmlBean htmlBean){
+            this.htmlBean = htmlBean;
         }
 
         public static class UBean implements Serializable {
@@ -780,6 +792,120 @@ public class CommonBean implements Serializable {
                 }
             }
         }
+
+        public static class HtmlBean  implements  Serializable{
+            /**
+             * body :
+             * title : 测测你被掰弯的可能性有多大 (105)
+             * thumbnail_small : ["http://static.cryrate.com/crop/150x150/haowan/h/hm/585c185865bd75593_t.jpeg?imageMogr2/q/70/thumbnail/600x600","http://static.cryrate.com/crop/150x150/haowan/h/hm/585c185865bd75593_t.jpeg?imageMogr2/q/70/thumbnail/600x600"]
+             * source_url : http://ce.chopoil.com/quiz/load/411?pid=22827148
+             * desc : 测测你被掰弯的可能性有多大
+             * type : 1
+             * thumbnail : ["http://static.cryrate.com/haowan/h/hm/585c185865bd75593_t.jpeg?imageMogr2/q/70/thumbnail/600x600","http://static.cryrate.com/haowan/h/hm/585c185865bd75593_t.jpeg?imageMogr2/q/70/thumbnail/600x600"]
+             * view : {"playcount":0,"playfcount":105}
+             */
+
+            private String body;
+            private String title;
+            private String source_url;
+            private String desc;
+            private String type;
+            private ViewBean view;
+            private List<String> thumbnail_small;
+            private List<String> thumbnail;
+
+            public String getBody() {
+                return body;
+            }
+
+            public void setBody(String body) {
+                this.body = body;
+            }
+
+            public String getTitle() {
+                return title;
+            }
+
+            public void setTitle(String title) {
+                this.title = title;
+            }
+
+            public String getSource_url() {
+                return source_url;
+            }
+
+            public void setSource_url(String source_url) {
+                this.source_url = source_url;
+            }
+
+            public String getDesc() {
+                return desc;
+            }
+
+            public void setDesc(String desc) {
+                this.desc = desc;
+            }
+
+            public String getType() {
+                return type;
+            }
+
+            public void setType(String type) {
+                this.type = type;
+            }
+
+            public ViewBean getView() {
+                return view;
+            }
+
+            public void setView(ViewBean view) {
+                this.view = view;
+            }
+
+            public List<String> getThumbnail_small() {
+                return thumbnail_small;
+            }
+
+            public void setThumbnail_small(List<String> thumbnail_small) {
+                this.thumbnail_small = thumbnail_small;
+            }
+
+            public List<String> getThumbnail() {
+                return thumbnail;
+            }
+
+            public void setThumbnail(List<String> thumbnail) {
+                this.thumbnail = thumbnail;
+            }
+
+            public static class ViewBean implements  Serializable {
+                /**
+                 * playcount : 0
+                 * playfcount : 105
+                 */
+
+                private String playcount;
+                private String playfcount;
+
+                public String getPlaycount() {
+                    return playcount;
+                }
+
+                public void setPlaycount(String playcount) {
+                    this.playcount = playcount;
+                }
+
+                public String getPlayfcount() {
+                    return playfcount;
+                }
+
+                public void setPlayfcount(String playfcount) {
+                    this.playfcount = playfcount;
+                }
+            }
+        }
+
+
 
         public static class TagsBean implements Serializable{
             /**

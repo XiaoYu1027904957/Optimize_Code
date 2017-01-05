@@ -46,15 +46,10 @@
         android:layout_marginRight="10dp"
         android:text="本兮，缅怀在一另一个世界的你，缅怀我们逝去的非主流岁月!"
         android:textSize="20sp" />
-    <!--<pl.droidsonroids.gif.GifImageView-->
-        <!--android:id="@+id/iv_image_gif"-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="200dp"-->
-        <!--android:layout_margin="10dp"-->
-        <!--android:layout_marginTop="5dp"/>-->
-
 
     <ImageView
+        android:adjustViewBounds="true"
+        android:scaleType="fitCenter"
         android:id="@+id/image"
         android:layout_width="match_parent"
         android:layout_height="180dp"

@@ -46,6 +46,7 @@ import fm.jiecao.jcvideoplayer_lib.JCVideoPlayer;
 public class RecyclerViewAdapter extends RecyclerView.Adapter {
     private final Context mContext;
     private final List<CommonBean.ListBean> datas;
+    private final CommonBean commonBean;
     LayoutInflater inflater;
     private Utils utils;
     private View view;
@@ -65,11 +66,12 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter {
     public static final int AUDIO = 5;
 
 
-    public RecyclerViewAdapter(Context mContext, List<CommonBean.ListBean> list) {
+    public RecyclerViewAdapter(Context mContext, List<CommonBean.ListBean> list, CommonBean commonBean) {
         this.mContext = mContext;
         this.datas = list;
         inflater = LayoutInflater.from(mContext);
         utils = new Utils();
+        this.commonBean = commonBean;
 
     }
 
@@ -199,11 +201,13 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter {
             textSun.setText(listBean.getDown() + "");
             textNews.setText(listBean.getForward() + "");
             textZhuan.setText(listBean.getStatus() + "");
-            tvduration.setText(utils.stringForTime(listBean.getVideo().getDuration() * 1000));
-            String data = listBean.getVideo().getVideo().get(1);
-            String s = listBean.getVideo().getThumbnail().get(0);
-            videocontroller1.setUp(data, s, "厉害了我的姐");
-            JCVideoPlayer.releaseAllVideos();
+            if (listBean.getVideo() != null) {
+                tvduration.setText(utils.stringForTime(listBean.getVideo().getDuration() * 1000));
+                String data = listBean.getVideo().getVideo().get(1);
+                String s = listBean.getVideo().getThumbnail().get(0);
+                videocontroller1.setUp(data, s, "厉害了我的姐");
+                JCVideoPlayer.releaseAllVideos();
+            }
 
             textZhuan.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -212,12 +216,6 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter {
                 }
             });
 
-//            button_share.setOnClickListener(new View.OnClickListener() {
-//                @Override
-//                public void onClick(View v) {
-//                    layout_show.setVisibility(View.GONE);
-//                }
-//            });
             //设置评论区
 
             if (listBean.getTop_comments() != null && listBean.getTop_comments() != null && listBean.getTop_comments().size() > 0) {
@@ -280,13 +278,13 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter {
                                 intent.putExtra("url", listBean.getVideo().getVideo().get(1));
                                 intent.putExtra("image", listBean.getVideo().getThumbnail().get(0));//图片路径
                                 intent.putExtra("position", listBean.getId());//网址值
-                                intent.putExtra("name",listBean.getU().getName());
-                                intent.putExtra("time",listBean.getPasstime());
-                                intent.putExtra("text",listBean.getText());
-                                intent.putExtra("imageurl",listBean.getU().getHeader().get(0));
-                                intent.putExtra("type",listBean.getType());
+                                intent.putExtra("name", listBean.getU().getName());
+                                intent.putExtra("time", listBean.getPasstime());
+                                intent.putExtra("text", listBean.getText());
+                                intent.putExtra("imageurl", listBean.getU().getHeader().get(0));
+                                intent.putExtra("type", listBean.getType());
                                 Bundle bundle = new Bundle();
-                                bundle.putSerializable("object",listBean);
+                                bundle.putSerializable("object", listBean);
                                 intent.putExtras(bundle);
                                 mContext.startActivity(intent);
 
@@ -419,16 +417,16 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter {
                             @Override
                             public void onClick(View view) {
                                 //业务逻辑处理
-                                Toast.makeText(mContext, "点击评论内容"+listBean.getImage().getThumbnail_small().get(0), Toast.LENGTH_SHORT).show();
+                                Toast.makeText(mContext, "点击评论内容" + listBean.getImage().getThumbnail_small().get(0), Toast.LENGTH_SHORT).show();
                                 Intent intent = new Intent(mContext, DetialImageActivity.class);
-                                intent.putExtra("imageurl",listBean.getImage().getThumbnail_small().get(0));
+                                intent.putExtra("imageurl", listBean.getImage().getThumbnail_small().get(0));
                                 intent.putExtra("position", listBean.getId());
-                                intent.putExtra("name",listBean.getU().getName());
-                                intent.putExtra("time",listBean.getPasstime());
-                                intent.putExtra("text",listBean.getText());
-                                intent.putExtra("image",listBean.getU().getHeader().get(0));
+                                intent.putExtra("name", listBean.getU().getName());
+                                intent.putExtra("time", listBean.getPasstime());
+                                intent.putExtra("text", listBean.getText());
+                                intent.putExtra("image", listBean.getU().getHeader().get(0));
                                 Bundle bundle = new Bundle();
-                                bundle.putSerializable("object",listBean);
+                                bundle.putSerializable("object", listBean);
                                 intent.putExtras(bundle);
                                 mContext.startActivity(intent);
 
@@ -456,7 +454,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter {
                 @Override
                 public void onClick(View v) {
                     Intent intent = new Intent(mContext, PhotoShow.class);
-                    intent.putExtra("imageurl",listBean.getImage().getThumbnail_small().get(0));
+                    intent.putExtra("imageurl", listBean.getImage().getThumbnail_small().get(0));
                     mContext.startActivity(intent);
                 }
             });
@@ -512,7 +510,10 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter {
             textSun.setText(listBean.getDown() + "");
             textNews.setText(listBean.getForward() + "");
             textZhuan.setText(listBean.getStatus() + "");
-//            Glide.with(mContext).load(listBean.getHtml().getThumbnail_small().get(0)).into(image);
+
+            Log.e("TAG", "---><-----" + listBean.getHtml().getThumbnail().get(0));
+            Glide.with(mContext).load(listBean.getHtml().getThumbnail().get(1)).into(image);
+
 
             //设置评论区
 
@@ -574,12 +575,12 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter {
                                 Toast.makeText(mContext, "点击评论内容", Toast.LENGTH_SHORT).show();
                                 Intent intent = new Intent(mContext, DetialImageActivity.class);
                                 intent.putExtra("position", listBean.getId());
-                                intent.putExtra("name",listBean.getU().getName());
-                                intent.putExtra("time",listBean.getPasstime());
-                                intent.putExtra("text",listBean.getText());
-                                intent.putExtra("image",listBean.getU().getHeader().get(0));
+                                intent.putExtra("name", listBean.getU().getName());
+                                intent.putExtra("time", listBean.getPasstime());
+                                intent.putExtra("text", listBean.getText());
+                                intent.putExtra("image", listBean.getU().getHeader().get(0));
                                 Bundle bundle = new Bundle();
-                                bundle.putSerializable("object",listBean);
+                                bundle.putSerializable("object", listBean);
                                 intent.putExtras(bundle);
                                 mContext.startActivity(intent);
 
@@ -654,7 +655,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter {
             textNews.setText(listBean.getForward() + "");
             textZhuan.setText(listBean.getStatus() + "");
             //设置评论区
-
+            Glide.with(mContext).load(listBean.getGif().getGif_thumbnail().get(0)).into(image);
             if (listBean.getTop_comments() != null && listBean.getTop_comments() != null && listBean.getTop_comments().size() > 0) {
                 //设置评论区可见
                 layout.setVisibility(View.VISIBLE);
@@ -713,12 +714,12 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter {
                                 Toast.makeText(mContext, "点击评论内容", Toast.LENGTH_SHORT).show();
                                 Intent intent = new Intent(mContext, DetialImageActivity.class);
                                 intent.putExtra("position", listBean.getId());
-                                intent.putExtra("name",listBean.getU().getName());
-                                intent.putExtra("time",listBean.getPasstime());
-                                intent.putExtra("text",listBean.getText());
-                                intent.putExtra("image",listBean.getU().getHeader().get(0));
+                                intent.putExtra("name", listBean.getU().getName());
+                                intent.putExtra("time", listBean.getPasstime());
+                                intent.putExtra("text", listBean.getText());
+                                intent.putExtra("image", listBean.getU().getHeader().get(0));
                                 Bundle bundle = new Bundle();
-                                bundle.putSerializable("object",listBean);
+                                bundle.putSerializable("object", listBean);
                                 intent.putExtras(bundle);
                                 mContext.startActivity(intent);
 
@@ -761,8 +762,6 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter {
         RelativeLayout rlItem;
         @InjectView(R.id.text_intriduce)
         TextView textIntriduce;
-//        @InjectView(R.id.text_show)
-//        TextView textShow;
         @InjectView(R.id.text_zan)
         TextView textZan;
         @InjectView(R.id.text_sun)
@@ -848,14 +847,14 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter {
                             public void onClick(View view) {
                                 //业务逻辑处理
                                 Intent intent = new Intent(mContext, DetialTextActivity.class);
-                                intent.putExtra("text",listBean.getText());
+                                intent.putExtra("text", listBean.getText());
                                 intent.putExtra("position", listBean.getId());
-                                intent.putExtra("name",listBean.getU().getName());
-                                intent.putExtra("time",listBean.getPasstime());
-                                intent.putExtra("text",listBean.getText());
-                                intent.putExtra("image",listBean.getU().getHeader().get(0));
+                                intent.putExtra("name", listBean.getU().getName());
+                                intent.putExtra("time", listBean.getPasstime());
+                                intent.putExtra("text", listBean.getText());
+                                intent.putExtra("image", listBean.getU().getHeader().get(0));
                                 Bundle bundle = new Bundle();
-                                bundle.putSerializable("object",listBean);
+                                bundle.putSerializable("object", listBean);
                                 intent.putExtras(bundle);
                                 mContext.startActivity(intent);
 
@@ -1010,9 +1009,9 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter {
                                 Toast.makeText(mContext, "点击评论内容", Toast.LENGTH_SHORT).show();
                                 Intent intent = new Intent(mContext, DetialShowActivity.class);
                                 intent.putExtra("position", listBean.getId());
-                                intent.putExtra("name",listBean.getU().getName());
-                                intent.putExtra("time",listBean.getPasstime());
-                                intent.putExtra("text",listBean.getText());
+                                intent.putExtra("name", listBean.getU().getName());
+                                intent.putExtra("time", listBean.getPasstime());
+                                intent.putExtra("text", listBean.getText());
                                 mContext.startActivity(intent);
 
                             }
@@ -1043,7 +1042,6 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter {
 
         }
     }
-
 
 
     private void showShare() {
