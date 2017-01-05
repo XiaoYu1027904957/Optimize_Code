@@ -1,6 +1,8 @@
 package com.xiaoyu.rewritebaisi.mine;
 
 import android.content.Intent;
+import android.os.Bundle;
+import android.support.v4.view.ViewPager;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,6 +14,7 @@ import android.widget.TextView;
 
 import com.alibaba.fastjson.JSON;
 import com.bumptech.glide.Glide;
+import com.viewpagerindicator.CirclePageIndicator;
 import com.xiaoyu.rewritebaisi.R;
 import com.xiaoyu.rewritebaisi.app.LoginActivity;
 import com.xiaoyu.rewritebaisi.base.BaseFragment;
@@ -20,7 +23,6 @@ import com.xiaoyu.rewritebaisi.base.OnGetListener;
 import com.xiaoyu.rewritebaisi.constantUtils.ContantUtils;
 import com.xiaoyu.rewritebaisi.mine.adapter.ViewPagerAdapter;
 import com.xiaoyu.rewritebaisi.mine.bean.TuijianBean;
-import com.xiaoyu.rewritebaisi.view.NoPreloadViewPager;
 
 import java.util.List;
 
@@ -39,11 +41,13 @@ public class MineFragment extends BaseFragment {
     @InjectView(R.id.login_in)
     TextView loginIn;
     @InjectView(R.id.viewpager)
-    NoPreloadViewPager viewpager;
+    ViewPager viewpager;
     @InjectView(R.id.mine_listView)
     ListView mineListView;
     @InjectView(R.id.login_in_more)
     ImageView login_more;
+    @InjectView(R.id.circle_barner)
+    CirclePageIndicator circleBarner;
 
     private List<TuijianBean.RecTagsBean> list;
     private MyListViewAdapter adapter;
@@ -102,10 +106,25 @@ public class MineFragment extends BaseFragment {
         viewPageradapter = new ViewPagerAdapter(getChildFragmentManager(), list);
         viewpager.setOffscreenPageLimit(0);
         viewpager.setAdapter(viewPageradapter);
+        circleBarner.setViewPager(viewpager);
     }
 
     private TuijianBean processData(String json) {
         return JSON.parseObject(json, TuijianBean.class);
+    }
+
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        // TODO: inflate a fragment view
+        View rootView = super.onCreateView(inflater, container, savedInstanceState);
+        ButterKnife.inject(this, rootView);
+        return rootView;
+    }
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        ButterKnife.reset(this);
     }
 
 

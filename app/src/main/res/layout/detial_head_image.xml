@@ -36,12 +36,18 @@
                 android:layout_marginLeft="17dp"
                 android:background="@drawable/head_portrait" />
         </RelativeLayout>
-
+    <TextView
+        android:layout_marginRight="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_below="@+id/rl_item"
+        android:id="@+id/text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
         <RelativeLayout
             android:id="@+id/rl_1"
             android:layout_width="match_parent"
             android:layout_height="150dp"
-            android:layout_below="@+id/rl_item">
+            android:layout_below="@+id/text">
 
             <ImageView
                 android:id="@+id/videocontroller1"

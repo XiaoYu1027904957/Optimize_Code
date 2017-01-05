@@ -41,16 +41,23 @@ public class RecyclerDetialImageAdapter extends RecyclerView.Adapter<RecyclerVie
     public static final int OTHER = 1;
     private final Context mContext;
     private final List<DetialsBean.NormalBean.ListBeanX> datas;
+    private final String imageurl;
     private final String image;
     private LayoutInflater inflater;
     private int currentType = 0;
+    private final String name;
+    private final String time;
+    private final String text;
 
-
-    public RecyclerDetialImageAdapter(Context mContext, List<DetialsBean.NormalBean.ListBeanX> datas, String image) {
+    public RecyclerDetialImageAdapter(Context mContext, List<DetialsBean.NormalBean.ListBeanX> datas,  String imageurl, String name, String time, String text,String image) {
 
         this.mContext = mContext;
         inflater = LayoutInflater.from(mContext);
         this.datas = datas;
+        this.imageurl = imageurl;
+        this.name = name;
+        this.time = time;
+        this.text = text;
         this.image = image;
     }
 
@@ -120,14 +127,19 @@ public class RecyclerDetialImageAdapter extends RecyclerView.Adapter<RecyclerVie
         TextView textNews;
         @InjectView(R.id.text_pinglun)
         LinearLayout textPinglun;
-
+        @InjectView(R.id.text)
+        TextView textView;
         public HeadViewHolder(View itemView) {
             super(itemView);
             ButterKnife.inject(this, itemView);
         }
 
         public void setData() {
-            Glide.with(mContext).load(image).into(videocontroller1);
+            Glide.with(mContext).load(imageurl).into(videocontroller1);
+            Glide.with(mContext).load(image).transform(new GlideCircleTransform(mContext)).into(iconMine);
+            titleBar.setText(name);
+            recyclerTime.setText(time);
+            textView.setText(text);
 
         }
     }

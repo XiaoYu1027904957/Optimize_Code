@@ -106,5 +106,10 @@
         android:id="@+id/layout_commont"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
-
+    <View
+        android:layout_marginTop="4dp"
+        android:layout_below="@+id/layout_commont"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#010000"/>
 </LinearLayout>

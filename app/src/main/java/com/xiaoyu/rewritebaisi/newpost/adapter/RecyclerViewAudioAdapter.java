@@ -702,8 +702,8 @@ public class RecyclerViewAudioAdapter extends RecyclerView.Adapter {
         RelativeLayout rlItem;
         @InjectView(R.id.text_intriduce)
         TextView textIntriduce;
-        @InjectView(R.id.text_show)
-        TextView textShow;
+//        @InjectView(R.id.text_show)
+//        TextView textShow;
         @InjectView(R.id.text_zan)
         TextView textZan;
         @InjectView(R.id.text_sun)

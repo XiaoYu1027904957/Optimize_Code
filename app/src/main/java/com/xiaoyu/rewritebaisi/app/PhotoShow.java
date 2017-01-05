@@ -2,6 +2,7 @@ package com.xiaoyu.rewritebaisi.app;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.widget.ImageView;
 
 import com.squareup.picasso.Picasso;
@@ -28,7 +29,7 @@ public class PhotoShow extends AppCompatActivity {
         setContentView(R.layout.activity_photo_show);
         ButterKnife.inject(this);
 
-        url = getIntent().getStringExtra("url");
+        url = getIntent().getStringExtra("imageurl");
         final PhotoViewAttacher attacher = new PhotoViewAttacher(ivPhoto);
 
         //设置xUtils3的配置

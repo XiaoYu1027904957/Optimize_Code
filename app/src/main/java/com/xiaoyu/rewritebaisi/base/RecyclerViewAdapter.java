@@ -35,6 +35,8 @@ import java.util.List;
 
 import butterknife.ButterKnife;
 import butterknife.InjectView;
+import cn.sharesdk.framework.ShareSDK;
+import cn.sharesdk.onekeyshare.OnekeyShare;
 import fm.jiecao.jcvideoplayer_lib.JCVideoPlayer;
 
 /**
@@ -276,8 +278,14 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter {
                                 Toast.makeText(mContext, "被点击了好开心", Toast.LENGTH_SHORT).show();
                                 Intent intent = new Intent(mContext, DetialShowActivity.class);
                                 intent.putExtra("url", listBean.getVideo().getVideo().get(1));
-                                intent.putExtra("image", listBean.getVideo().getThumbnail().get(0));
-                                intent.putExtra("position", listBean.getId());
+                                intent.putExtra("image", listBean.getVideo().getThumbnail().get(0));//图片路径
+                                intent.putExtra("position", listBean.getId());//网址值
+                                intent.putExtra("name",listBean.getU().getName());
+                                intent.putExtra("time",listBean.getPasstime());
+                                intent.putExtra("text",listBean.getText());
+                                intent.putExtra("imageurl",listBean.getU().getHeader().get(0));
+                                intent.putExtra("type",listBean.getType());
+
                                 mContext.startActivity(intent);
 
                             }
@@ -300,7 +308,12 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter {
                 layout.setVisibility(View.GONE);
             }
 
-
+            textNews.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    showShare();
+                }
+            });
         }
 
 
@@ -404,10 +417,14 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter {
                             @Override
                             public void onClick(View view) {
                                 //业务逻辑处理
-                                Toast.makeText(mContext, "点击评论内容", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(mContext, "点击评论内容"+listBean.getImage().getThumbnail_small().get(0), Toast.LENGTH_SHORT).show();
                                 Intent intent = new Intent(mContext, DetialImageActivity.class);
                                 intent.putExtra("imageurl",listBean.getImage().getThumbnail_small().get(0));
                                 intent.putExtra("position", listBean.getId());
+                                intent.putExtra("name",listBean.getU().getName());
+                                intent.putExtra("time",listBean.getPasstime());
+                                intent.putExtra("text",listBean.getText());
+                                intent.putExtra("image",listBean.getU().getHeader().get(0));
                                 mContext.startActivity(intent);
 
                             }
@@ -434,7 +451,14 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter {
                 @Override
                 public void onClick(View v) {
                     Intent intent = new Intent(mContext, PhotoShow.class);
+                    intent.putExtra("imageurl",listBean.getImage().getThumbnail_small().get(0));
                     mContext.startActivity(intent);
+                }
+            });
+            textNews.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    showShare();
                 }
             });
 
@@ -545,6 +569,10 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter {
                                 Toast.makeText(mContext, "点击评论内容", Toast.LENGTH_SHORT).show();
                                 Intent intent = new Intent(mContext, DetialImageActivity.class);
                                 intent.putExtra("position", listBean.getId());
+                                intent.putExtra("name",listBean.getU().getName());
+                                intent.putExtra("time",listBean.getPasstime());
+                                intent.putExtra("text",listBean.getText());
+                                intent.putExtra("image",listBean.getU().getHeader().get(0));
                                 mContext.startActivity(intent);
 
                             }
@@ -566,7 +594,12 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter {
                 //设置评论区不可见
                 layout.setVisibility(View.GONE);
             }
-
+            textNews.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    showShare();
+                }
+            });
 
         }
     }
@@ -672,6 +705,10 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter {
                                 Toast.makeText(mContext, "点击评论内容", Toast.LENGTH_SHORT).show();
                                 Intent intent = new Intent(mContext, DetialImageActivity.class);
                                 intent.putExtra("position", listBean.getId());
+                                intent.putExtra("name",listBean.getU().getName());
+                                intent.putExtra("time",listBean.getPasstime());
+                                intent.putExtra("text",listBean.getText());
+                                intent.putExtra("image",listBean.getU().getHeader().get(0));
                                 mContext.startActivity(intent);
 
                             }
@@ -693,6 +730,12 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter {
                 //设置评论区不可见
                 layout.setVisibility(View.GONE);
             }
+            textNews.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    showShare();
+                }
+            });
         }
     }
 
@@ -707,8 +750,8 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter {
         RelativeLayout rlItem;
         @InjectView(R.id.text_intriduce)
         TextView textIntriduce;
-        @InjectView(R.id.text_show)
-        TextView textShow;
+//        @InjectView(R.id.text_show)
+//        TextView textShow;
         @InjectView(R.id.text_zan)
         TextView textZan;
         @InjectView(R.id.text_sun)
@@ -797,6 +840,10 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter {
                                 Intent intent = new Intent(mContext, DetialTextActivity.class);
                                 intent.putExtra("text",listBean.getText());
                                 intent.putExtra("position", listBean.getId());
+                                intent.putExtra("name",listBean.getU().getName());
+                                intent.putExtra("time",listBean.getPasstime());
+                                intent.putExtra("text",listBean.getText());
+                                intent.putExtra("image",listBean.getU().getHeader().get(0));
                                 mContext.startActivity(intent);
 
                             }
@@ -819,7 +866,12 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter {
                 layout.setVisibility(View.GONE);
             }
 
-
+            textNews.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    showShare();
+                }
+            });
         }
     }
 
@@ -945,6 +997,9 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter {
                                 Toast.makeText(mContext, "点击评论内容", Toast.LENGTH_SHORT).show();
                                 Intent intent = new Intent(mContext, DetialShowActivity.class);
                                 intent.putExtra("position", listBean.getId());
+                                intent.putExtra("name",listBean.getU().getName());
+                                intent.putExtra("time",listBean.getPasstime());
+                                intent.putExtra("text",listBean.getText());
                                 mContext.startActivity(intent);
 
                             }
@@ -966,8 +1021,47 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter {
                 //设置评论区不可见
                 layout.setVisibility(View.GONE);
             }
-
+            textNews.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    showShare();
+                }
+            });
 
         }
     }
+
+
+
+    private void showShare() {
+        ShareSDK.initSDK(mContext);
+        OnekeyShare oks = new OnekeyShare();
+        //关闭sso授权
+        oks.disableSSOWhenAuthorize();
+
+// 分享时Notification的图标和文字  2.5.9以后的版本不调用此方法
+        //oks.setNotification(R.drawable.ic_launcher, getString(R.string.app_name));
+        // title标题，印象笔记、邮箱、信息、微信、人人网和QQ空间使用
+        oks.setTitle("标题");
+        // titleUrl是标题的网络链接，仅在人人网和QQ空间使用
+        oks.setTitleUrl("http://sharesdk.cn");
+        // text是分享文本，所有平台都需要这个字段
+        oks.setText("我是分享文本");
+        //分享网络图片，新浪微博分享网络图片需要通过审核后申请高级写入接口，否则请注释掉测试新浪微博
+        oks.setImageUrl("http://f1.sharesdk.cn/imgs/2014/02/26/owWpLZo_638x960.jpg");
+        // imagePath是图片的本地路径，Linked-In以外的平台都支持此参数
+        //oks.setImagePath("/sdcard/test.jpg");//确保SDcard下面存在此张图片
+        // url仅在微信（包括好友和朋友圈）中使用
+        oks.setUrl("http://sharesdk.cn");
+        // comment是我对这条分享的评论，仅在人人网和QQ空间使用
+        oks.setComment("我是测试评论文本");
+        // site是分享此内容的网站名称，仅在QQ空间使用
+        oks.setSite("ShareSDK");
+        // siteUrl是分享此内容的网站地址，仅在QQ空间使用
+        oks.setSiteUrl("http://sharesdk.cn");
+
+// 启动分享GUI
+        oks.show(mContext);
+    }
+
 }

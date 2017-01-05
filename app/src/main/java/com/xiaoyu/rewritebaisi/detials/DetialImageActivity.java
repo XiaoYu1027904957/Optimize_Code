@@ -30,7 +30,10 @@ public class DetialImageActivity extends AppCompatActivity {
     private RecyclerDetialImageAdapter adapter;
     private String position;
     List<DetialsBean.NormalBean.ListBeanX> list;
-    private String url;
+    private String imageurl;
+    private String name;
+    private String time;
+    private String text;
     private String image;
 
     @Override
@@ -46,7 +49,11 @@ public class DetialImageActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
         position = intent.getStringExtra("position");
-        image = intent.getStringExtra("imageurl");
+        imageurl = intent.getStringExtra("imageurl");
+        name = intent.getStringExtra("name");
+        time = intent.getStringExtra("time");
+        text = intent.getStringExtra("text");
+        image = intent.getStringExtra("image");
         getDataFromNet();
     }
 
@@ -70,7 +77,7 @@ public class DetialImageActivity extends AppCompatActivity {
         DetialsBean detialsBean = processData(json);
         list = detialsBean.getNormal().getList();
         if (json != null) {
-            adapter = new RecyclerDetialImageAdapter(this, list, image);
+            adapter = new RecyclerDetialImageAdapter(this, list, imageurl, name, time, text, image);
             recycler.setAdapter(adapter);
             LinearLayoutManager manager = new LinearLayoutManager(DetialImageActivity.this);
             recycler.setLayoutManager(manager);
@@ -84,6 +91,7 @@ public class DetialImageActivity extends AppCompatActivity {
     }
 
     @OnClick(R.id.rank_back)
-    public void onClick() {finish();
+    public void onClick() {
+        finish();
     }
 }

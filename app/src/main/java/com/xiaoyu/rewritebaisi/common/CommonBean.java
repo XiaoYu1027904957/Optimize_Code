@@ -59,7 +59,7 @@ public class CommonBean {
         }
     }
 
-    public static class ListBean {
+    public static class ListBean  {
         /**
          * status : 4
          * comment : 16
