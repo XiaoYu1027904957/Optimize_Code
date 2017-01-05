@@ -1,6 +1,7 @@
 package com.xiaoyu.rewritebaisi;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
@@ -15,6 +16,7 @@ import android.view.MenuItem;
 import android.widget.FrameLayout;
 import android.widget.RadioGroup;
 
+import com.xiaoyu.rewritebaisi.app.ShowAnimationActivity;
 import com.xiaoyu.rewritebaisi.essence.EssenceFragment;
 import com.xiaoyu.rewritebaisi.follow.FollowFragment;
 import com.xiaoyu.rewritebaisi.mine.MineFragment;
@@ -26,8 +28,7 @@ import java.util.List;
 import butterknife.ButterKnife;
 import butterknife.InjectView;
 
-public class MainActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener {
+public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     @InjectView(R.id.main_fragment)
     FrameLayout mainFragment;
 
@@ -107,10 +108,10 @@ public class MainActivity extends AppCompatActivity
                         position = 1;
                         break;
                     case R.id.main_rb_3:
-//                        Intent intent = new Intent(MainActivity.this,ShowAnimationActivity.class);
-//                        intent.setClassName(mContext,"com.xiaoyu.app.ShowAnimationActivity");
-//                        mContext.startActivity(intent);
-//                        MainActivity.this.overridePendingTransition(R.anim.activity_open,0);
+                        Intent intent = new Intent(MainActivity.this,ShowAnimationActivity.class);
+                        intent.setClassName(mContext,"com.xiaoyu.rewritebaisi.app.ShowAnimationActivity");
+                         mContext.startActivity(intent);
+                        MainActivity.this.overridePendingTransition(R.anim.activity_open,0);
                         break;
                     case R.id.main_rb_4:
                         position = 2;

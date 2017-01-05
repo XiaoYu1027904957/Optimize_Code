@@ -3,6 +3,7 @@ package com.xiaoyu.rewritebaisi.base;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
+import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
 import android.text.SpannableStringBuilder;
 import android.text.Spanned;
@@ -14,7 +15,6 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
@@ -181,8 +181,8 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter {
         LinearLayout layout;
         @InjectView(R.id.show_info)
         LinearLayout layout_show;
-        @InjectView(R.id.button_share)
-        Button button_share;
+//        @InjectView(R.id.button_share)
+//        Button button_share;
 
 
         public VideoViewHolder(View itemView) {
@@ -212,12 +212,12 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter {
                 }
             });
 
-            button_share.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    layout_show.setVisibility(View.GONE);
-                }
-            });
+//            button_share.setOnClickListener(new View.OnClickListener() {
+//                @Override
+//                public void onClick(View v) {
+//                    layout_show.setVisibility(View.GONE);
+//                }
+//            });
             //设置评论区
 
             if (listBean.getTop_comments() != null && listBean.getTop_comments() != null && listBean.getTop_comments().size() > 0) {
@@ -285,7 +285,9 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter {
                                 intent.putExtra("text",listBean.getText());
                                 intent.putExtra("imageurl",listBean.getU().getHeader().get(0));
                                 intent.putExtra("type",listBean.getType());
-
+                                Bundle bundle = new Bundle();
+                                bundle.putSerializable("object",listBean);
+                                intent.putExtras(bundle);
                                 mContext.startActivity(intent);
 
                             }
@@ -425,6 +427,9 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter {
                                 intent.putExtra("time",listBean.getPasstime());
                                 intent.putExtra("text",listBean.getText());
                                 intent.putExtra("image",listBean.getU().getHeader().get(0));
+                                Bundle bundle = new Bundle();
+                                bundle.putSerializable("object",listBean);
+                                intent.putExtras(bundle);
                                 mContext.startActivity(intent);
 
                             }
@@ -573,6 +578,9 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter {
                                 intent.putExtra("time",listBean.getPasstime());
                                 intent.putExtra("text",listBean.getText());
                                 intent.putExtra("image",listBean.getU().getHeader().get(0));
+                                Bundle bundle = new Bundle();
+                                bundle.putSerializable("object",listBean);
+                                intent.putExtras(bundle);
                                 mContext.startActivity(intent);
 
                             }
@@ -709,6 +717,9 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter {
                                 intent.putExtra("time",listBean.getPasstime());
                                 intent.putExtra("text",listBean.getText());
                                 intent.putExtra("image",listBean.getU().getHeader().get(0));
+                                Bundle bundle = new Bundle();
+                                bundle.putSerializable("object",listBean);
+                                intent.putExtras(bundle);
                                 mContext.startActivity(intent);
 
                             }
@@ -836,7 +847,6 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter {
                             @Override
                             public void onClick(View view) {
                                 //业务逻辑处理
-                                Toast.makeText(mContext, "点击评论内容", Toast.LENGTH_SHORT).show();
                                 Intent intent = new Intent(mContext, DetialTextActivity.class);
                                 intent.putExtra("text",listBean.getText());
                                 intent.putExtra("position", listBean.getId());
@@ -844,6 +854,9 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter {
                                 intent.putExtra("time",listBean.getPasstime());
                                 intent.putExtra("text",listBean.getText());
                                 intent.putExtra("image",listBean.getU().getHeader().get(0));
+                                Bundle bundle = new Bundle();
+                                bundle.putSerializable("object",listBean);
+                                intent.putExtras(bundle);
                                 mContext.startActivity(intent);
 
                             }
@@ -901,8 +914,8 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter {
         LinearLayout layout;
         @InjectView(R.id.show_info)
         LinearLayout layout_show;
-        @InjectView(R.id.button_share)
-        Button button_share;
+//        @InjectView(R.id.button_share)
+//        Button button_share;
 
         public AudioViewHolder(View itemView) {
             super(itemView);
@@ -931,12 +944,12 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter {
                 }
             });
 
-            button_share.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    layout_show.setVisibility(View.GONE);
-                }
-            });
+//            button_share.setOnClickListener(new View.OnClickListener() {
+//                @Override
+//                public void onClick(View v) {
+//                    layout_show.setVisibility(View.GONE);
+//                }
+//            });
             //设置评论区
 
             if (listBean.getTop_comments() != null && listBean.getTop_comments() != null && listBean.getTop_comments().size() > 0) {

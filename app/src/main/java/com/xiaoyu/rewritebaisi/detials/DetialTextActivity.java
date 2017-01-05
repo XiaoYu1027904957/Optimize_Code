@@ -12,6 +12,7 @@ import com.alibaba.fastjson.JSON;
 import com.xiaoyu.rewritebaisi.R;
 import com.xiaoyu.rewritebaisi.base.GetNet;
 import com.xiaoyu.rewritebaisi.base.OnGetListener;
+import com.xiaoyu.rewritebaisi.common.CommonBean;
 import com.xiaoyu.rewritebaisi.constantUtils.ContantUtils;
 import com.xiaoyu.rewritebaisi.essence.adapter.RecyclerDetialTextAdapter;
 import com.xiaoyu.rewritebaisi.essence.bean.DetialsBean;
@@ -36,6 +37,8 @@ public class DetialTextActivity extends AppCompatActivity {
     private String text;
     private String name;
     private String time;
+    private List<DetialsBean.HotBean.ListBean> datas;
+    private CommonBean.ListBean listBean;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,7 +57,8 @@ public class DetialTextActivity extends AppCompatActivity {
         text = intent.getStringExtra("text");
         name = intent.getStringExtra("name");
         time = intent.getStringExtra("time");
-
+        Bundle bundle = intent.getExtras();
+        listBean = (CommonBean.ListBean) bundle.getSerializable("object");
         getDataFromNet();
     }
 
@@ -77,8 +81,9 @@ public class DetialTextActivity extends AppCompatActivity {
     private void paraseData(String json) {
         DetialsBean detialsBean = processData(json);
         list = detialsBean.getNormal().getList();
+        datas = detialsBean.getHot().getList();
         if (json != null) {
-            adapter = new RecyclerDetialTextAdapter(this, list, image,name,time,text);
+            adapter = new RecyclerDetialTextAdapter(this, list, image, name, time, text, datas);
             recycler.setAdapter(adapter);
             LinearLayoutManager manager = new LinearLayoutManager(DetialTextActivity.this);
             recycler.setLayoutManager(manager);

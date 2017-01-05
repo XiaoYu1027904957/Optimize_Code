@@ -12,6 +12,7 @@ import com.alibaba.fastjson.JSON;
 import com.xiaoyu.rewritebaisi.R;
 import com.xiaoyu.rewritebaisi.base.GetNet;
 import com.xiaoyu.rewritebaisi.base.OnGetListener;
+import com.xiaoyu.rewritebaisi.common.CommonBean;
 import com.xiaoyu.rewritebaisi.constantUtils.ContantUtils;
 import com.xiaoyu.rewritebaisi.essence.adapter.RecyclerDetialAdapter;
 import com.xiaoyu.rewritebaisi.essence.bean.DetialsBean;
@@ -38,7 +39,8 @@ public class DetialShowActivity extends AppCompatActivity {
     private String text;
     private String imageurl;
     private String type;
-
+    private List<DetialsBean.HotBean.ListBean> datas;
+    private CommonBean.ListBean listBean;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -59,6 +61,8 @@ public class DetialShowActivity extends AppCompatActivity {
         text = intent.getStringExtra("text");
         imageurl = intent.getStringExtra("imageurl");
         type = intent.getStringExtra("type");
+        Bundle bundle = intent.getExtras();
+        listBean = (CommonBean.ListBean) bundle.getSerializable("object");
         getDataFromNet();
     }
 
@@ -81,8 +85,9 @@ public class DetialShowActivity extends AppCompatActivity {
     private void paraseData(String json) {
         DetialsBean detialsBean = processData(json);
         list = detialsBean.getNormal().getList();
+        datas = detialsBean.getHot().getList();
         if (json != null) {
-            adapter = new RecyclerDetialAdapter(this, list, url, image, name, time, text, imageurl,type);
+            adapter = new RecyclerDetialAdapter(this, list, url, image, name, time, text, imageurl,type,datas);
             recycler.setAdapter(adapter);
             LinearLayoutManager manager = new LinearLayoutManager(DetialShowActivity.this);
             recycler.setLayoutManager(manager);

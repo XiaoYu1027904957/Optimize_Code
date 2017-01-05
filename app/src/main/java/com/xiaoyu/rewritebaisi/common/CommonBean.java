@@ -1,12 +1,13 @@
 package com.xiaoyu.rewritebaisi.common;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
  * Created by yuxiaobai on 2017/1/3.
  */
 
-public class CommonBean {
+public class CommonBean implements Serializable {
 
 
     /**
@@ -33,7 +34,7 @@ public class CommonBean {
         this.list = list;
     }
 
-    public static class InfoBean {
+    public static class InfoBean implements Serializable{
         /**
          * count : 4427
          * np : 1483448102
@@ -59,7 +60,7 @@ public class CommonBean {
         }
     }
 
-    public static class ListBean  {
+    public static class ListBean implements Serializable {
         /**
          * status : 4
          * comment : 16
@@ -234,7 +235,7 @@ public class CommonBean {
             this.tags = tags;
         }
 
-        public static class UBean {
+        public static class UBean implements Serializable {
             /**
              * header : ["http://wimg.spriteapp.cn/profile/large/2016/10/23/580cc59d90750_mini.jpg","http://dimg.spriteapp.cn/profile/large/2016/10/23/580cc59d90750_mini.jpg"]
              * uid : 11058295
@@ -330,7 +331,7 @@ public class CommonBean {
             }
         }
 
-        public static class VideoBean {
+        public static class VideoBean  implements Serializable{
             /**
              * playfcount : 2021
              * height : 360
@@ -426,7 +427,7 @@ public class CommonBean {
             }
         }
 
-        public static class ImageBean {
+        public static class ImageBean  implements Serializable{
             /**
              * medium : []
              * big : ["http://wimg.spriteapp.cn/ugc/2017/01/03/586ac7041cfe1_1.jpg","http://dimg.spriteapp.cn/ugc/2017/01/03/586ac7041cfe1_1.jpg"]
@@ -502,7 +503,7 @@ public class CommonBean {
             }
         }
 
-        public static class GifBean {
+        public static class GifBean implements Serializable {
             /**
              * images : ["http://wimg.spriteapp.cn/ugc/2017/01/02/586a608d4498d.gif","http://dimg.spriteapp.cn/ugc/2017/01/02/586a608d4498d.gif"]
              * width : 190
@@ -558,7 +559,7 @@ public class CommonBean {
             }
         }
 
-        public static class TopCommentsBean {
+        public static class TopCommentsBean  implements Serializable{
             /**
              * voicetime : 0
              * status : 0
@@ -683,7 +684,7 @@ public class CommonBean {
                 this.id = id;
             }
 
-            public static class UBeanX {
+            public static class UBeanX implements Serializable {
                 /**
                  * header : ["http://wx.qlogo.cn/mmopen/ZeuSZYeUCFKfGe1ufic7YARiaibLkof7rKYSJtaAQV2JL4rCVyohMnI16EMFwEzeL7GLa3KkhEY1N92rB48a2h68U4UqiablZJeb/0","http://wx.qlogo.cn/mmopen/ZeuSZYeUCFKfGe1ufic7YARiaibLkof7rKYSJtaAQV2JL4rCVyohMnI16EMFwEzeL7GLa3KkhEY1N92rB48a2h68U4UqiablZJeb/0"]
                  * uid : 19830177
@@ -780,7 +781,7 @@ public class CommonBean {
             }
         }
 
-        public static class TagsBean {
+        public static class TagsBean implements Serializable{
             /**
              * id : 1
              * name : 搞笑

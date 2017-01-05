@@ -14,7 +14,6 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
@@ -181,8 +180,8 @@ public class RecyclerViewAudioAdapter extends RecyclerView.Adapter {
         LinearLayout layout;
         @InjectView(R.id.show_info)
         LinearLayout layout_show;
-        @InjectView(R.id.button_share)
-        Button button_share;
+//        @InjectView(R.id.button_share)
+//        Button button_share;
 
 
         public VideoViewHolder(View itemView) {
@@ -207,12 +206,12 @@ public class RecyclerViewAudioAdapter extends RecyclerView.Adapter {
                 }
             });
 
-            button_share.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    layout_show.setVisibility(View.GONE);
-                }
-            });
+//            button_share.setOnClickListener(new View.OnClickListener() {
+//                @Override
+//                public void onClick(View v) {
+//                    layout_show.setVisibility(View.GONE);
+//                }
+//            });
             //设置评论区
 
             if (listBean.getTop_comments() != null && listBean.getTop_comments() != null && listBean.getTop_comments().size() > 0) {
@@ -845,8 +844,8 @@ public class RecyclerViewAudioAdapter extends RecyclerView.Adapter {
         LinearLayout layout;
         @InjectView(R.id.show_info)
         LinearLayout layout_show;
-        @InjectView(R.id.button_share)
-        Button button_share;
+//        @InjectView(R.id.button_share)
+//        Button button_share;
 
         public AudioViewHolder(View itemView) {
             super(itemView);
@@ -873,12 +872,12 @@ public class RecyclerViewAudioAdapter extends RecyclerView.Adapter {
                 }
             });
 
-            button_share.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    layout_show.setVisibility(View.GONE);
-                }
-            });
+//            button_share.setOnClickListener(new View.OnClickListener() {
+//                @Override
+//                public void onClick(View v) {
+//                    layout_show.setVisibility(View.GONE);
+//                }
+//            });
             //设置评论区
 
             if (listBean.getTop_comments() != null && listBean.getTop_comments() != null && listBean.getTop_comments().size() > 0) {

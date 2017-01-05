@@ -9,6 +9,7 @@ import android.text.TextPaint;
 import android.text.TextUtils;
 import android.text.method.LinkMovementMethod;
 import android.text.style.ClickableSpan;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -28,6 +29,8 @@ import java.util.List;
 import butterknife.ButterKnife;
 import butterknife.InjectView;
 
+import static com.xiaoyu.rewritebaisi.essence.adapter.RecyclerDetialTextAdapter.HOT;
+
 /**
  * Created by yuxiaobai on 2017/1/4.
  */
@@ -43,13 +46,14 @@ public class RecyclerDetialImageAdapter extends RecyclerView.Adapter<RecyclerVie
     private final List<DetialsBean.NormalBean.ListBeanX> datas;
     private final String imageurl;
     private final String image;
+    private final List<DetialsBean.HotBean.ListBean> hotlist;
     private LayoutInflater inflater;
     private int currentType = 0;
     private final String name;
     private final String time;
     private final String text;
 
-    public RecyclerDetialImageAdapter(Context mContext, List<DetialsBean.NormalBean.ListBeanX> datas,  String imageurl, String name, String time, String text,String image) {
+    public RecyclerDetialImageAdapter(Context mContext, List<DetialsBean.NormalBean.ListBeanX> datas, String imageurl, String name, String time, String text, String image, List<DetialsBean.HotBean.ListBean> hotlist) {
 
         this.mContext = mContext;
         inflater = LayoutInflater.from(mContext);
@@ -59,6 +63,7 @@ public class RecyclerDetialImageAdapter extends RecyclerView.Adapter<RecyclerVie
         this.time = time;
         this.text = text;
         this.image = image;
+        this.hotlist = hotlist;
     }
 
 
@@ -67,10 +72,14 @@ public class RecyclerDetialImageAdapter extends RecyclerView.Adapter<RecyclerVie
         if (viewType == 0) {
             View view = inflater.inflate(R.layout.detial_head_image, parent, false);
             return new HeadViewHolder(view);
-        } else {
-            View view = inflater.inflate(R.layout.list_comment, parent, false);
+        } else if (viewType == OTHER) {
+            View view = inflater.inflate(R.layout.list_coment_text, parent, false);
             return new MyViewHolder(view);
+        } else if (viewType == HOT) {
+            View view = inflater.inflate(R.layout.list_coment_hot, parent, false);
+            return new MyHotViewHolder(view);
         }
+        return null;
     }
 
     @Override
@@ -79,8 +88,11 @@ public class RecyclerDetialImageAdapter extends RecyclerView.Adapter<RecyclerVie
         if (getItemViewType(position) == HEAD) {
             HeadViewHolder viewHolder = (HeadViewHolder) holder;
             viewHolder.setData();
-        } else {
-            MyViewHolder viewHolder = (MyViewHolder) holder;
+        } else if (getItemViewType(position) == OTHER) {
+         MyViewHolder viewHolder = (MyViewHolder) holder;
+            viewHolder.setData();
+        } else if (getItemViewType(position) == HOT) {
+           MyHotViewHolder viewHolder = (MyHotViewHolder) holder;
             viewHolder.setData();
         }
     }
@@ -88,15 +100,17 @@ public class RecyclerDetialImageAdapter extends RecyclerView.Adapter<RecyclerVie
     @Override
     public int getItemCount() {
 
-        return datas.size();
+        return 3;
     }
 
     @Override
     public int getItemViewType(int position) {
         if (position == HEAD) {
             currentType = HEAD;
-        } else {
+        } else if(position==OTHER) {
             currentType = OTHER;
+        }else if(position==HOT) {
+            currentType = HOT;
         }
         return currentType;
     }
@@ -140,123 +154,262 @@ public class RecyclerDetialImageAdapter extends RecyclerView.Adapter<RecyclerVie
             titleBar.setText(name);
             recyclerTime.setText(time);
             textView.setText(text);
-
         }
     }
 
     class MyViewHolder extends RecyclerView.ViewHolder {
-        @InjectView(R.id.comment_icon)
-        ImageView commentIcon;
-        @InjectView(R.id.user_level)
-        TextView userLevel;
-        @InjectView(R.id.sex)
-        TextView sex;
-        @InjectView(R.id.comment_name)
-        TextView commentName;
-        @InjectView(R.id.comment_content)
-        TextView commentContent;
-        @InjectView(R.id.comment_zan)
-        ImageView commentZan;
-        @InjectView(R.id.edit_zan)
-        TextView editZan;
-        @InjectView(R.id.comment_cai)
-        ImageView commentCai;
-        @InjectView(R.id.edit_cai)
-        TextView editCai;
-        @InjectView(R.id.Reply)
-        LinearLayout Reply;
+        @InjectView(R.id.title_show)
+        TextView titleShow;
+        @InjectView(R.id.comment_content_show)
+        LinearLayout commentContentShow;
 
-        public MyViewHolder(View view) {
+        private TextView userLevel;
+        private TextView sex;
+        private TextView commentName;
+        private TextView commentContent;
+        private LinearLayout Reply;
+        private ImageView commentIcon;
+        private RelativeLayout item_anyone;
+
+
+        public MyViewHolder(View itemView) {
+            super(itemView);
+            ButterKnife.inject(this, itemView);
+
+        }
+
+        public void setData() {
+
+            commentContentShow.removeAllViews();
+            for (int j = 0; j < datas.size(); j++) {
+
+                View view = View.inflate(mContext, R.layout.list_comment_text_item, null);
+                userLevel = (TextView) view.findViewById(R.id.user_level);
+                sex = (TextView) view.findViewById(R.id.sex);
+                commentName = (TextView) view.findViewById(R.id.comment_name);
+                commentContent = (TextView) view.findViewById(R.id.comment_content);
+                Reply = (LinearLayout) view.findViewById(R.id.Reply);
+                commentIcon = (ImageView) view.findViewById(R.id.comment_icon);
+                item_anyone = (RelativeLayout) view.findViewById(R.id.item_anyone);
+
+                DetialsBean.NormalBean.ListBeanX listBeanX = datas.get(j);
+
+
+                Glide.with(mContext).load(listBeanX.getUser().getProfile_image()).transform(new GlideCircleTransform(mContext)).into(commentIcon);
+                userLevel.setText(listBeanX.getUser().getTotal_cmt_like_count());
+                sex.setText(listBeanX.getUser().getSex());
+                commentName.setText(listBeanX.getUser().getUsername());
+                commentContent.setText(listBeanX.getContent());
+
+                if (listBeanX.getPrecmts().size() > 0) {
+                    //设置评论区
+
+
+                    //设置评论区可见
+                    Reply.setVisibility(View.VISIBLE);
+                    Reply.removeAllViews();
+                    List<?> precmts = listBeanX.getPrecmts();
+                    for (int i = 0; i < precmts.size(); i++) {
+                        TextView textview = new TextView(mContext);
+//                    TextView tv_comment_list = (TextView) UIUtils.getView(R.layout.tv_comment_list);
+                        final DetialsBean.NormalBean.ListBeanX listBeanX1 = (DetialsBean.NormalBean.ListBeanX) precmts.get(i);
+                        if (!TextUtils.isEmpty(listBeanX1.getContent()) && !TextUtils.isEmpty(listBeanX1.getUser().getUsername())) {
+                            //获取评论的用户名和评论内容
+                            String comment = listBeanX1.getUser().getUsername() + " :  " + listBeanX1.getContent();
+                            //构造SpannableStringBuilder
+                            SpannableStringBuilder builder = new SpannableStringBuilder(comment);
+                            //构造改变字体颜色的span
+//                        ForegroundColorSpan span = new ForegroundColorSpan(UIUtils.getContext().getResources().getColor(R.color.blue));
+                            //将span用于 评论区用户名的颜色
+//                        builder.setSpan(span,0,topCommentsBean.getU().getName().length(), Spanned.SPAN_INCLUSIVE_INCLUSIVE);
+
+                            //设置点击用户名，部分text文本内容可点击
+                            builder.setSpan(new ClickableSpan() {
+
+                                @Override
+                                public void updateDrawState(TextPaint ds) {
+                                    super.updateDrawState(ds);
+                                    //设置指定文字的颜色
+                                    ds.setColor(Color.BLUE);
+                                    //设置指定文字是否需要下划线
+                                    ds.setUnderlineText(false);
+                                }
+
+                                @Override
+                                public void onClick(View view) {
+                                    //进项业务逻辑处理
+                                    Toast.makeText(mContext, "--->" + listBeanX1.getUser().getUsername() + "", Toast.LENGTH_SHORT).show();
+
+                                }
+                            }, 0, listBeanX1.getUser().getUsername().length(), Spanned.SPAN_INCLUSIVE_INCLUSIVE);
+
+
+                            //评论内容可点击
+                            builder.setSpan(new ClickableSpan() {
+
+                                @Override
+                                public void updateDrawState(TextPaint ds) {
+                                    super.updateDrawState(ds);
+                                    //设置指定文字的颜色
+                                    ds.setColor(Color.BLACK);
+                                    //设置指定文字是否需要下划线
+                                    ds.setUnderlineText(false);
+                                }
+
+                                @Override
+                                public void onClick(View view) {
+
+
+                                }
+                            }, listBeanX1.getUser().getUsername().length(), comment.length(), Spanned.SPAN_INCLUSIVE_INCLUSIVE);
+
+
+                            //设置textview 显示出来
+                            textview.setText(builder);
+                            //设置textview 的setMovementMethod 不设置 不可点击
+                            textview.setMovementMethod(LinkMovementMethod.getInstance());
+                            //添加得到commentArea
+                            Reply.addView(textview);
+                        }
+                    }
+
+
+                } else {
+                    //设置评论区不可见
+                    Reply.setVisibility(View.GONE);
+                }
+
+
+                commentContentShow.addView(item_anyone);
+            }
+
+        }
+    }
+
+
+    public class MyHotViewHolder extends RecyclerView.ViewHolder {
+
+        @InjectView(R.id.title_show)
+        TextView titleShow;
+        @InjectView(R.id.comment_content_show)
+        LinearLayout commentContentShow;
+
+        private TextView userLevel;
+        private TextView sex;
+        private TextView commentName;
+        private TextView commentContent;
+        private LinearLayout Reply;
+        private ImageView commentIcon;
+        private RelativeLayout item_anyone;
+
+        public MyHotViewHolder(View view) {
             super(view);
             ButterKnife.inject(this, itemView);
         }
 
         public void setData() {
-            DetialsBean.NormalBean.ListBeanX listBeanX = datas.get(getAdapterPosition());
-            Glide.with(mContext).load(listBeanX.getUser().getProfile_image()).transform(new GlideCircleTransform(mContext)).into(commentIcon);
-            userLevel.setText(listBeanX.getUser().getTotal_cmt_like_count());
-            sex.setText(listBeanX.getUser().getSex());
-            commentName.setText(listBeanX.getUser().getUsername());
-            commentContent.setText(listBeanX.getContent());
-            if(listBeanX.getPrecmts().size()>0) {
-                //设置评论区
+            commentContentShow.removeAllViews();
+            for (int j = 0; j < hotlist.size(); j++) {
+                Log.e("TAG", "------------------------------------->"+j);
+                View view = View.inflate(mContext, R.layout.list_comment_text_item, null);
+                userLevel = (TextView) view.findViewById(R.id.user_level);
+                sex = (TextView) view.findViewById(R.id.sex);
+                commentName = (TextView) view.findViewById(R.id.comment_name);
+                commentContent = (TextView) view.findViewById(R.id.comment_content);
+                Reply = (LinearLayout) view.findViewById(R.id.Reply);
+                commentIcon = (ImageView) view.findViewById(R.id.comment_icon);
+                item_anyone = (RelativeLayout) view.findViewById(R.id.item_anyone);
+
+                DetialsBean.HotBean.ListBean listBean = hotlist.get(j);
 
 
-                //设置评论区可见
-                Reply.setVisibility(View.VISIBLE);
-                Reply.removeAllViews();
-                List<?> precmts = listBeanX.getPrecmts();
-                for (int i = 0; i < precmts.size(); i++) {
-                    TextView textview = new TextView(mContext);
+                Glide.with(mContext).load(listBean.getUser().getProfile_image()).transform(new GlideCircleTransform(mContext)).into(commentIcon);
+                userLevel.setText(listBean.getUser().getTotal_cmt_like_count());
+                sex.setText(listBean.getUser().getSex());
+                commentName.setText(listBean.getUser().getUsername());
+                commentContent.setText(listBean.getContent());
+
+                if (listBean.getPrecmts().size() > 0) {
+                    //设置评论区
+
+
+                    //设置评论区可见
+                    Reply.setVisibility(View.VISIBLE);
+                    Reply.removeAllViews();
+                    List<?> precmts = listBean.getPrecmts();
+                    for (int i = 0; i < precmts.size(); i++) {
+                        TextView textview = new TextView(mContext);
 //                    TextView tv_comment_list = (TextView) UIUtils.getView(R.layout.tv_comment_list);
-                    final DetialsBean.NormalBean.ListBeanX listBeanX1 = (DetialsBean.NormalBean.ListBeanX) precmts.get(i);
-                    if (!TextUtils.isEmpty(listBeanX1.getContent()) && !TextUtils.isEmpty(listBeanX1.getUser().getUsername())) {
-                        //获取评论的用户名和评论内容
-                        String comment = listBeanX1.getUser().getUsername() + " :  " + listBeanX1.getContent();
-                        //构造SpannableStringBuilder
-                        SpannableStringBuilder builder = new SpannableStringBuilder(comment);
-                        //构造改变字体颜色的span
+                        final DetialsBean.NormalBean.ListBeanX listBeanX1 = (DetialsBean.NormalBean.ListBeanX) precmts.get(i);
+                        if (!TextUtils.isEmpty(listBeanX1.getContent()) && !TextUtils.isEmpty(listBeanX1.getUser().getUsername())) {
+                            //获取评论的用户名和评论内容
+                            String comment = listBeanX1.getUser().getUsername() + " :  " + listBeanX1.getContent();
+                            //构造SpannableStringBuilder
+                            SpannableStringBuilder builder = new SpannableStringBuilder(comment);
+                            //构造改变字体颜色的span
 //                        ForegroundColorSpan span = new ForegroundColorSpan(UIUtils.getContext().getResources().getColor(R.color.blue));
-                        //将span用于 评论区用户名的颜色
+                            //将span用于 评论区用户名的颜色
 //                        builder.setSpan(span,0,topCommentsBean.getU().getName().length(), Spanned.SPAN_INCLUSIVE_INCLUSIVE);
 
-                        //设置点击用户名，部分text文本内容可点击
-                        builder.setSpan(new ClickableSpan() {
+                            //设置点击用户名，部分text文本内容可点击
+                            builder.setSpan(new ClickableSpan() {
 
-                            @Override
-                            public void updateDrawState(TextPaint ds) {
-                                super.updateDrawState(ds);
-                                //设置指定文字的颜色
-                                ds.setColor(Color.BLUE);
-                                //设置指定文字是否需要下划线
-                                ds.setUnderlineText(false);
-                            }
+                                @Override
+                                public void updateDrawState(TextPaint ds) {
+                                    super.updateDrawState(ds);
+                                    //设置指定文字的颜色
+                                    ds.setColor(Color.BLUE);
+                                    //设置指定文字是否需要下划线
+                                    ds.setUnderlineText(false);
+                                }
 
-                            @Override
-                            public void onClick(View view) {
-                                //进项业务逻辑处理
-                                Toast.makeText(mContext, "--->" +listBeanX1.getUser().getUsername() + "", Toast.LENGTH_SHORT).show();
+                                @Override
+                                public void onClick(View view) {
+                                    //进项业务逻辑处理
+                                    Toast.makeText(mContext, "--->" + listBeanX1.getUser().getUsername() + "", Toast.LENGTH_SHORT).show();
 
-                            }
-                        }, 0, listBeanX1.getUser().getUsername().length(), Spanned.SPAN_INCLUSIVE_INCLUSIVE);
-
-
-                        //评论内容可点击
-                        builder.setSpan(new ClickableSpan() {
-
-                            @Override
-                            public void updateDrawState(TextPaint ds) {
-                                super.updateDrawState(ds);
-                                //设置指定文字的颜色
-                                ds.setColor(Color.BLACK);
-                                //设置指定文字是否需要下划线
-                                ds.setUnderlineText(false);
-                            }
-
-                            @Override
-                            public void onClick(View view) {
+                                }
+                            }, 0, listBeanX1.getUser().getUsername().length(), Spanned.SPAN_INCLUSIVE_INCLUSIVE);
 
 
-                            }
-                        }, listBeanX1.getUser().getUsername().length(), comment.length(), Spanned.SPAN_INCLUSIVE_INCLUSIVE);
+                            //评论内容可点击
+                            builder.setSpan(new ClickableSpan() {
+
+                                @Override
+                                public void updateDrawState(TextPaint ds) {
+                                    super.updateDrawState(ds);
+                                    //设置指定文字的颜色
+                                    ds.setColor(Color.BLACK);
+                                    //设置指定文字是否需要下划线
+                                    ds.setUnderlineText(false);
+                                }
+
+                                @Override
+                                public void onClick(View view) {
 
 
-                        //设置textview 显示出来
-                        textview.setText(builder);
-                        //设置textview 的setMovementMethod 不设置 不可点击
-                        textview.setMovementMethod(LinkMovementMethod.getInstance());
-                        //添加得到commentArea
-                        Reply.addView(textview);
+                                }
+                            }, listBeanX1.getUser().getUsername().length(), comment.length(), Spanned.SPAN_INCLUSIVE_INCLUSIVE);
+
+
+                            //设置textview 显示出来
+                            textview.setText(builder);
+                            //设置textview 的setMovementMethod 不设置 不可点击
+                            textview.setMovementMethod(LinkMovementMethod.getInstance());
+                            //添加得到commentArea
+                            Reply.addView(textview);
+                        }
                     }
+
+
+                } else {
+                    //设置评论区不可见
+                    Reply.setVisibility(View.GONE);
                 }
 
 
-
-            }else {
-                //设置评论区不可见
-                Reply.setVisibility(View.GONE);
+                commentContentShow.addView(item_anyone);
             }
-
         }
     }
 }
