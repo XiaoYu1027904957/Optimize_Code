@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_alignParentBottom="true"
+    android:layout_gravity="center"
+    android:orientation="vertical">
+
+    <Button
+        android:id="@+id/login_phone"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:background="#00000000"
+        android:gravity="center"
+        android:text="转发最多"
+        android:textSize="20dp" />
+
+    <Button
+        android:id="@+id/login_sina"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:background="#00000000"
+        android:gravity="center"
+        android:text="评论最多"
+        android:textSize="20dp" />
+
+    <Button
+        android:id="@+id/login_tencen"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:background="#00000000"
+        android:gravity="center"
+        android:text="点赞最多"
+        android:textSize="20dp" />
+
+
+
+</LinearLayout>

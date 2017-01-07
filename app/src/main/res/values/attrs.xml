@@ -7,4 +7,8 @@
         <item name="android:windowExitAnimation">@anim/pophidden_anim</item>
 
     </style>
+
+    <declare-styleable name="ImgListView">
+        <attr name="headimage" format="reference|color" />
+    </declare-styleable>
 </resources>

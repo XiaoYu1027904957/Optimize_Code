@@ -8,6 +8,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.xiaoyu.rewritebaisi.R;
+import com.xiaoyu.rewritebaisi.app.FollowOtherActivity;
 import com.xiaoyu.rewritebaisi.app.LoginActivity;
 import com.xiaoyu.rewritebaisi.base.BaseFragment;
 
@@ -30,6 +31,8 @@ public class FollowFragment extends BaseFragment {
     Button btnFllow1;
     @InjectView(R.id.login_in)
     Button loginIn;
+    @InjectView(R.id.follow_other)
+    TextView followOther;
     private Intent intent;
 
     @Override
@@ -40,7 +43,7 @@ public class FollowFragment extends BaseFragment {
         return view;
     }
 
-    @OnClick({R.id.btn_fllow_1, R.id.login_in})
+    @OnClick({R.id.btn_fllow_1, R.id.login_in,R.id.follow_other})
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.btn_fllow_1:
@@ -51,6 +54,12 @@ public class FollowFragment extends BaseFragment {
                 intent = new Intent(mContext, LoginActivity.class);
                 mContext.startActivity(intent);
                 break;
+            case R.id.follow_other:
+                intent = new Intent(mContext,FollowOtherActivity.class);
+                mContext.startActivity(intent);
+                break;
         }
     }
+
+
 }

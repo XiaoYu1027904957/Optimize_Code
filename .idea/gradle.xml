@@ -15,6 +15,9 @@
             <option value="$PROJECT_DIR$/app" />
             <option value="$PROJECT_DIR$/jcvideoplayer-lib" />
             <option value="$PROJECT_DIR$/library" />
+            <option value="$PROJECT_DIR$/percent-support" />
+            <option value="$PROJECT_DIR$/percent-support-extends" />
+            <option value="$PROJECT_DIR$/percent-support-extends-sample" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />

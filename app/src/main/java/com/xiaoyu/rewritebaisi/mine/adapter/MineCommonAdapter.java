@@ -1,4 +1,4 @@
-package com.xiaoyu.rewritebaisi.base;
+package com.xiaoyu.rewritebaisi.mine.adapter;
 
 import android.content.Context;
 import android.content.Intent;
@@ -23,7 +23,6 @@ import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.xiaoyu.rewritebaisi.R;
-import com.xiaoyu.rewritebaisi.app.ListViewActivity;
 import com.xiaoyu.rewritebaisi.app.PhotoShow;
 import com.xiaoyu.rewritebaisi.common.CommonBean;
 import com.xiaoyu.rewritebaisi.detials.DetialImageActivity;
@@ -41,13 +40,15 @@ import cn.sharesdk.onekeyshare.OnekeyShare;
 import fm.jiecao.jcvideoplayer_lib.JCVideoPlayer;
 
 /**
- * Created by yuxiaobai on 2017/1/3.
+ * Created by yuxiaobai on 2017/1/6.
  */
 
-public class RecyclerViewAdapter extends RecyclerView.Adapter {
+public class MineCommonAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
+
+
     private final Context mContext;
     private final List<CommonBean.ListBean> datas;
-    private final CommonBean commonBean;
+
     LayoutInflater inflater;
     private Utils utils;
     private View view;
@@ -66,16 +67,12 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter {
 
     public static final int AUDIO = 5;
 
-
-    public RecyclerViewAdapter(Context mContext, List<CommonBean.ListBean> list, CommonBean commonBean) {
-        this.mContext = mContext;
-        this.datas = list;
+    public MineCommonAdapter(Context mContext, List<CommonBean.ListBean> list) {
+        this.mContext =mContext;
+        this.datas =list;
         inflater = LayoutInflater.from(mContext);
         utils = new Utils();
-        this.commonBean = commonBean;
-
     }
-
 
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
@@ -100,33 +97,30 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter {
             return new AudioViewHolder(view);
         }
         return null;
-
     }
 
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
         int currentType = getItemViewType(position);
         if (currentType == VIDEO) {
-            VideoViewHolder viewHolder = (VideoViewHolder) holder;
+           VideoViewHolder viewHolder = (VideoViewHolder) holder;
             viewHolder.setData(datas.get(position));
         } else if (currentType == HTML) {
-            HtmlViewHolder viewHolder = (HtmlViewHolder) holder;
+        HtmlViewHolder viewHolder = (HtmlViewHolder) holder;
             viewHolder.setData(datas.get(position));
         } else if (currentType == TEXT) {
-            TextViewHolder viewHolder = (TextViewHolder) holder;
+          TextViewHolder viewHolder = (TextViewHolder) holder;
             viewHolder.setData(datas.get(position));
         } else if (currentType == GIF) {
             GifViewHolder viewHolder = (GifViewHolder) holder;
             viewHolder.setData(datas.get(position));
         } else if (currentType == IMAGE) {
-            ImageViewHolder viewHolder = (ImageViewHolder) holder;
+           ImageViewHolder viewHolder = (ImageViewHolder) holder;
             viewHolder.setData(datas.get(position));
         } else if (currentType == AUDIO) {
-            AudioViewHolder viewHolder = (AudioViewHolder) holder;
+           AudioViewHolder viewHolder = (AudioViewHolder) holder;
             viewHolder.setData(datas.get(position));
         }
-
-
     }
 
     @Override
@@ -159,6 +153,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter {
         return currentType;
     }
 
+
     class VideoViewHolder extends RecyclerView.ViewHolder {
         @InjectView(R.id.icon_imageView)
         ImageView iconImageView;
@@ -184,7 +179,8 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter {
         LinearLayout layout;
         @InjectView(R.id.show_info)
         LinearLayout layout_show;
-
+//        @InjectView(R.id.button_share)
+//        Button button_share;
 
 
         public VideoViewHolder(View itemView) {
@@ -203,7 +199,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter {
             textZhuan.setText(listBean.getStatus() + "");
             if (listBean.getVideo() != null) {
                 tvduration.setText(utils.stringForTime(listBean.getVideo().getDuration() * 1000));
-                String data = listBean.getVideo().getVideo().get(0);
+                String data = listBean.getVideo().getVideo().get(1);
                 String s = listBean.getVideo().getThumbnail().get(0);
                 videocontroller1.setUp(data, s, "厉害了我的姐");
                 JCVideoPlayer.releaseAllVideos();
@@ -311,23 +307,9 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter {
             textNews.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-//                    showShare();
+                    showShare();
                 }
             });
-
-            titleBar.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    Intent intent  = new Intent(mContext,ListViewActivity.class);
-                    Bundle bundle = new Bundle();
-                    bundle.putSerializable("object",listBean);
-                    intent.putExtras(bundle);
-                    mContext.startActivity(intent);
-                }
-            });
-
-
-
         }
 
 
@@ -475,20 +457,11 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter {
             textNews.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-//                    showShare();
+                    showShare();
                 }
             });
 
-            titleBar.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    Intent intent  = new Intent(mContext,ListViewActivity.class);
-                    Bundle bundle = new Bundle();
-                    bundle.putSerializable("object",listBean);
-                    intent.putExtras(bundle);
-                    mContext.startActivity(intent);
-                }
-            });
+
         }
     }
 
@@ -629,19 +602,10 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter {
             textNews.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-//                    showShare();
+                    showShare();
                 }
             });
-            titleBar.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    Intent intent  = new Intent(mContext,ListViewActivity.class);
-                    Bundle bundle = new Bundle();
-                    bundle.putSerializable("object",listBean);
-                    intent.putExtras(bundle);
-                    mContext.startActivity(intent);
-                }
-            });
+
         }
     }
 
@@ -777,17 +741,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter {
             textNews.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-//                    showShare();
-                }
-            });
-            titleBar.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    Intent intent  = new Intent(mContext,ListViewActivity.class);
-                    Bundle bundle = new Bundle();
-                    bundle.putSerializable("object",listBean);
-                    intent.putExtras(bundle);
-                    mContext.startActivity(intent);
+                    showShare();
                 }
             });
         }
@@ -923,17 +877,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter {
             textNews.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-//                    showShare();
-                }
-            });
-            titleBar.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    Intent intent  = new Intent(mContext,ListViewActivity.class);
-                    Bundle bundle = new Bundle();
-                    bundle.putSerializable("object",listBean);
-                    intent.putExtras(bundle);
-                    mContext.startActivity(intent);
+                    showShare();
                 }
             });
         }
@@ -995,6 +939,12 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter {
                 }
             });
 
+//            button_share.setOnClickListener(new View.OnClickListener() {
+//                @Override
+//                public void onClick(View v) {
+//                    layout_show.setVisibility(View.GONE);
+//                }
+//            });
             //设置评论区
 
             if (listBean.getTop_comments() != null && listBean.getTop_comments() != null && listBean.getTop_comments().size() > 0) {
@@ -1082,19 +1032,10 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter {
             textNews.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-//                    showShare();
+                    showShare();
                 }
             });
-            titleBar.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    Intent intent  = new Intent(mContext,ListViewActivity.class);
-                    Bundle bundle = new Bundle();
-                    bundle.putSerializable("object",listBean);
-                    intent.putExtras(bundle);
-                    mContext.startActivity(intent);
-                }
-            });
+
         }
     }
 
@@ -1129,5 +1070,4 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter {
 // 启动分享GUI
         oks.show(mContext);
     }
-
 }

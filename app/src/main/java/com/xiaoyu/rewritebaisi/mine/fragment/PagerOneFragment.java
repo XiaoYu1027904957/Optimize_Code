@@ -121,6 +121,7 @@ public class PagerOneFragment extends BaseFragment {
                     case 5:
 //                        Toast.makeText(mContext, "败家姐", Toast.LENGTH_SHORT).show();
                         intent = new Intent(mContext,BaiJiaJieActivity.class);
+                        mContext.startActivity(intent);
                         break;
                     case 6:
 //                        Toast.makeText(mContext, "百思帮派", Toast.LENGTH_SHORT).show();

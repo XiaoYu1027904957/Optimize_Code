@@ -279,16 +279,16 @@ public class ShowAnimationActivity extends AppCompatActivity {
                 TextView tv = new TextView(this);
                 tv.setText("请先下载不得姐视频录制插件");
                 new AlertDialog.Builder(this)
-                            .setTitle("上传视频")
-                            .setView(tv)
-                            .setPositiveButton("确定", new DialogInterface.OnClickListener() {
-                                @Override
-                                public void onClick(DialogInterface dialog, int which) {
-                                            finish();
-                                }
-                            })
-                            .setNegativeButton("取消", null)
-                            .show();
+                        .setTitle("上传视频")
+                        .setView(tv)
+                        .setPositiveButton("确定", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                finish();
+                            }
+                        })
+                        .setNegativeButton("取消", null)
+                        .show();
                 break;
             case R.id.picture_edit:
                 intent = new Intent(Intent.ACTION_GET_CONTENT);
@@ -298,7 +298,8 @@ public class ShowAnimationActivity extends AppCompatActivity {
                 break;
             case R.id.text_edit:
                 Toast.makeText(ShowAnimationActivity.this, "编辑文本信息", Toast.LENGTH_SHORT).show();
-
+                intent = new Intent(this, ShowEditActivity.class);
+                startActivity(intent);
                 break;
             case R.id.voice_edit:
                 Toast.makeText(ShowAnimationActivity.this, "编辑声音信息", Toast.LENGTH_SHORT).show();
@@ -307,6 +308,8 @@ public class ShowAnimationActivity extends AppCompatActivity {
                 break;
             case R.id.link_edit:
                 Toast.makeText(ShowAnimationActivity.this, "编辑链接信息", Toast.LENGTH_SHORT).show();
+                intent = new Intent(this, ShowEditActivity.class);
+                startActivity(intent);
                 break;
         }
     }

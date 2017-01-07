@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--<FrameLayout-->
+    <!--android:layout_width="fill_parent"-->
+    <!--android:layout_height="300dp"-->
+  <!--&gt;-->
+
+
+    <ImageView  xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/imageView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="#EEEEEE"
+        android:scaleType="matrix"
+        android:src="@drawable/top_img" />
+
+    <!--<TextView-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="40dp"-->
+        <!--android:gravity="center"-->
+        <!--android:text="个人主页"-->
+        <!--android:textSize="25dp" />-->
+
+    <!--<ImageView-->
+
+        <!--android:id="@+id/imageView2"-->
+        <!--android:layout_width="80dp"-->
+        <!--android:layout_height="80dp"-->
+        <!--android:layout_marginLeft="30dp"-->
+        <!--android:layout_marginTop="200dp"-->
+        <!--android:background="@drawable/send_picture" />-->
+
+
+<!--</FrameLayout>-->

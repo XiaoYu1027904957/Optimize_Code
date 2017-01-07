@@ -9,6 +9,9 @@
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/jcvideoplayer-lib/jcvideoplayer-lib.iml" filepath="$PROJECT_DIR$/jcvideoplayer-lib/jcvideoplayer-lib.iml" />
       <module fileurl="file://$PROJECT_DIR$/library/library.iml" filepath="$PROJECT_DIR$/library/library.iml" />
+      <module fileurl="file://$PROJECT_DIR$/percent-support/percent-support.iml" filepath="$PROJECT_DIR$/percent-support/percent-support.iml" />
+      <module fileurl="file://$PROJECT_DIR$/percent-support-extends/percent-support-extends.iml" filepath="$PROJECT_DIR$/percent-support-extends/percent-support-extends.iml" />
+      <module fileurl="file://$PROJECT_DIR$/percent-support-extends-sample/percent-support-extends-sample.iml" filepath="$PROJECT_DIR$/percent-support-extends-sample/percent-support-extends-sample.iml" />
     </modules>
   </component>
 </project>

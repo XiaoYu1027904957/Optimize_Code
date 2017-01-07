@@ -65,6 +65,7 @@ public class MyApplication extends Application {
         PlatformConfig.setDropbox("oz8v5apet3arcdy","h7p2pjbzkkxt02a");
 
 
+
     }
 
     private void initUniversalImageLoader() {

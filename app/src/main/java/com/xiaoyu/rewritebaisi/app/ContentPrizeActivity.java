@@ -3,6 +3,7 @@ package com.xiaoyu.rewritebaisi.app;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -36,9 +37,10 @@ public class ContentPrizeActivity extends AppCompatActivity {
     }
 
     private void initWebView() {
-        webViewMine.getSettings().setJavaScriptEnabled(true);
+        WebSettings settings = webViewMine.getSettings();
+        settings.setJavaScriptEnabled(true);
+        settings.setDomStorageEnabled(true);
         webViewMine.loadUrl(ContantUtils.MINE_CONTRIBUTE);
-
 
     }
 

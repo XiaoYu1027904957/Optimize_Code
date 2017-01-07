@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.zhy.android.percent.support.PercentRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/activity_recommend"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".app.FollowOtherActivity">
+    <RelativeLayout
+        android:background="#ff0000"
+        android:id="@+id/rl_recommend"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        >
+
+        <TextView
+
+            android:id="@+id/tv_cancle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
+            android:clickable="true"
+            android:drawableLeft="@drawable/collect_left_button_night"
+            android:text="返回"
+            android:textColor="#878686"
+            android:textSize="15sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_centerVertical="true"
+            android:text="推荐关注"
+            android:textColor="#ffffff"
+            android:textSize="23sp" />
+
+        <ImageView
+            android:background="@drawable/btn_title_search_icon_press"
+            android:id="@+id/iv_shousuo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="15dp"
+            android:clickable="true" />
+    </RelativeLayout>
+    <ListView
+        android:layout_below="@+id/rl_recommend"
+        android:id="@+id/lv_left"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:scrollbars="none"
+        app:layout_widthPercent="22%" />
+
+    <android.support.v7.widget.RecyclerView
+        android:background="#ffffff"
+        android:layout_below="@+id/rl_recommend"
+        android:id="@+id/rv_right"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_toRightOf="@id/lv_left"
+        app:layout_widthPercent="78%"/>
+
+</com.zhy.android.percent.support.PercentRelativeLayout>

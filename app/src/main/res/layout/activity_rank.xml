@@ -33,6 +33,49 @@
             android:textSize="24dp" />
     </LinearLayout>
 
+    <LinearLayout
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="30dp">
+
+        <TextView
+            android:id="@+id/bangdan_all"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_weight="1"
+            android:drawablePadding="5dp"
+            android:drawableRight="@drawable/barrage_pack_down"
+            android:paddingTop="5dp"
+            android:text="全部"
+            android:textSize="16dp" />
+
+        <TextView
+            android:id="@+id/bangdan_day"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_weight="1"
+            android:drawablePadding="5dp"
+            android:drawableRight="@drawable/barrage_pack_down"
+            android:paddingTop="5dp"
+            android:text="日榜"
+            android:textSize="16dp" />
+
+        <TextView
+            android:id="@+id/bangdan_most"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_weight="1"
+            android:drawablePadding="5dp"
+            android:drawableRight="@drawable/barrage_pack_down"
+            android:paddingTop="5dp"
+            android:text="转发最多"
+            android:textSize="16dp" />
+    </LinearLayout>
+
     <android.support.v7.widget.RecyclerView
         android:id="@+id/rank_recyclerView"
         android:layout_width="match_parent"

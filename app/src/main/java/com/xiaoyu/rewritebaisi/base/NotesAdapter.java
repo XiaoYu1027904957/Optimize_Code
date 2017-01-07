@@ -25,13 +25,14 @@ import com.bumptech.glide.Glide;
 import com.xiaoyu.rewritebaisi.R;
 import com.xiaoyu.rewritebaisi.app.ListViewActivity;
 import com.xiaoyu.rewritebaisi.app.PhotoShow;
-import com.xiaoyu.rewritebaisi.common.CommonBean;
 import com.xiaoyu.rewritebaisi.detials.DetialImageActivity;
 import com.xiaoyu.rewritebaisi.detials.DetialShowActivity;
 import com.xiaoyu.rewritebaisi.detials.DetialTextActivity;
+import com.xiaoyu.rewritebaisi.essence.bean.TieZiBean;
 import com.xiaoyu.rewritebaisi.utils.GlideCircleTransform;
 import com.xiaoyu.rewritebaisi.utils.Utils;
 
+import java.io.Serializable;
 import java.util.List;
 
 import butterknife.ButterKnife;
@@ -41,13 +42,12 @@ import cn.sharesdk.onekeyshare.OnekeyShare;
 import fm.jiecao.jcvideoplayer_lib.JCVideoPlayer;
 
 /**
- * Created by yuxiaobai on 2017/1/3.
+ * Created by yuxiaobai on 2017/1/7.
  */
 
-public class RecyclerViewAdapter extends RecyclerView.Adapter {
+public class NotesAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     private final Context mContext;
-    private final List<CommonBean.ListBean> datas;
-    private final CommonBean commonBean;
+    private final List<TieZiBean.ListBean> datas;
     LayoutInflater inflater;
     private Utils utils;
     private View view;
@@ -67,12 +67,12 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter {
     public static final int AUDIO = 5;
 
 
-    public RecyclerViewAdapter(Context mContext, List<CommonBean.ListBean> list, CommonBean commonBean) {
+    public NotesAdapter(Context mContext, List<TieZiBean.ListBean> list) {
         this.mContext = mContext;
         this.datas = list;
         inflater = LayoutInflater.from(mContext);
         utils = new Utils();
-        this.commonBean = commonBean;
+
 
     }
 
@@ -107,13 +107,13 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter {
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
         int currentType = getItemViewType(position);
         if (currentType == VIDEO) {
-            VideoViewHolder viewHolder = (VideoViewHolder) holder;
+           VideoViewHolder viewHolder = (VideoViewHolder) holder;
             viewHolder.setData(datas.get(position));
         } else if (currentType == HTML) {
-            HtmlViewHolder viewHolder = (HtmlViewHolder) holder;
+         HtmlViewHolder viewHolder = (HtmlViewHolder) holder;
             viewHolder.setData(datas.get(position));
         } else if (currentType == TEXT) {
-            TextViewHolder viewHolder = (TextViewHolder) holder;
+        TextViewHolder viewHolder = (TextViewHolder) holder;
             viewHolder.setData(datas.get(position));
         } else if (currentType == GIF) {
             GifViewHolder viewHolder = (GifViewHolder) holder;
@@ -184,7 +184,8 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter {
         LinearLayout layout;
         @InjectView(R.id.show_info)
         LinearLayout layout_show;
-
+//        @InjectView(R.id.button_share)
+//        Button button_share;
 
 
         public VideoViewHolder(View itemView) {
@@ -192,7 +193,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter {
             ButterKnife.inject(this, itemView);
         }
 
-        public void setData(final CommonBean.ListBean listBean) {
+        public void setData(final TieZiBean.ListBean listBean) {
             titleBar.setText(listBean.getU().getName());
             texttime.setText(listBean.getPasstime());
             Glide.with(mContext).load(listBean.getU().getHeader().get(0)).transform(new GlideCircleTransform(mContext)).into(iconImageView);
@@ -222,11 +223,11 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter {
                 //设置评论区可见
                 layout.setVisibility(View.VISIBLE);
                 layout.removeAllViews();
-                List<CommonBean.ListBean.TopCommentsBean> top_comments = listBean.getTop_comments();
+                List<TieZiBean.ListBean.TopCommentsBean> top_comments = listBean.getTop_comments();
                 for (int i = 0; i < top_comments.size(); i++) {
                     TextView textview = new TextView(mContext);
 //                    TextView tv_comment_list = (TextView) UIUtils.getView(R.layout.tv_comment_list);
-                    final CommonBean.ListBean.TopCommentsBean topCommentsBean = top_comments.get(i);
+                    final TieZiBean.ListBean.TopCommentsBean topCommentsBean = top_comments.get(i);
                     if (!TextUtils.isEmpty(topCommentsBean.getContent()) && !TextUtils.isEmpty(topCommentsBean.getU().getName())) {
                         //获取评论的用户名和评论内容
                         String comment = topCommentsBean.getU().getName() + " :  " + topCommentsBean.getContent();
@@ -284,7 +285,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter {
                                 intent.putExtra("imageurl", listBean.getU().getHeader().get(0));
                                 intent.putExtra("type", listBean.getType());
                                 Bundle bundle = new Bundle();
-                                bundle.putSerializable("object", listBean);
+                                bundle.putSerializable("object", (Serializable) listBean);
                                 intent.putExtras(bundle);
                                 mContext.startActivity(intent);
 
@@ -311,7 +312,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter {
             textNews.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-//                    showShare();
+                    showShare();
                 }
             });
 
@@ -320,7 +321,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter {
                 public void onClick(View v) {
                     Intent intent  = new Intent(mContext,ListViewActivity.class);
                     Bundle bundle = new Bundle();
-                    bundle.putSerializable("object",listBean);
+                    bundle.putSerializable("object", (Serializable) listBean);
                     intent.putExtras(bundle);
                     mContext.startActivity(intent);
                 }
@@ -362,7 +363,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter {
             ButterKnife.inject(this, itemView);
         }
 
-        public void setData(final CommonBean.ListBean listBean) {
+        public void setData(final TieZiBean.ListBean listBean) {
             titleBar.setText(listBean.getU().getName());
             texttime.setText(listBean.getPasstime());
             Glide.with(mContext).load(listBean.getU().getHeader().get(0)).transform(new GlideCircleTransform(mContext)).into(iconImageView);
@@ -372,7 +373,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter {
             textNews.setText(listBean.getForward() + "");
             textZhuan.setText(listBean.getStatus() + "");
 
-            Glide.with(mContext).load(listBean.getImage().getThumbnail_small().get(0)).into(image);
+//            Glide.with(mContext).load(listBean.getImage().getThumbnail_small().get(0)).into(image);
 
             //设置评论区
 
@@ -380,11 +381,11 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter {
                 //设置评论区可见
                 layout.setVisibility(View.VISIBLE);
                 layout.removeAllViews();
-                List<CommonBean.ListBean.TopCommentsBean> top_comments = listBean.getTop_comments();
+                List<TieZiBean.ListBean.TopCommentsBean> top_comments = listBean.getTop_comments();
                 for (int i = 0; i < top_comments.size(); i++) {
                     TextView textview = new TextView(mContext);
 //                    TextView tv_comment_list = (TextView) UIUtils.getView(R.layout.tv_comment_list);
-                    final CommonBean.ListBean.TopCommentsBean topCommentsBean = top_comments.get(i);
+                    final TieZiBean.ListBean.TopCommentsBean topCommentsBean = top_comments.get(i);
                     if (!TextUtils.isEmpty(topCommentsBean.getContent()) && !TextUtils.isEmpty(topCommentsBean.getU().getName())) {
                         //获取评论的用户名和评论内容
                         String comment = topCommentsBean.getU().getName() + " :  " + topCommentsBean.getContent();
@@ -431,18 +432,18 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter {
                             @Override
                             public void onClick(View view) {
                                 //业务逻辑处理
-                                Toast.makeText(mContext, "点击评论内容" + listBean.getImage().getThumbnail_small().get(0), Toast.LENGTH_SHORT).show();
-                                Intent intent = new Intent(mContext, DetialImageActivity.class);
-                                intent.putExtra("imageurl", listBean.getImage().getThumbnail_small().get(0));
-                                intent.putExtra("position", listBean.getId());
-                                intent.putExtra("name", listBean.getU().getName());
-                                intent.putExtra("time", listBean.getPasstime());
-                                intent.putExtra("text", listBean.getText());
-                                intent.putExtra("image", listBean.getU().getHeader().get(0));
-                                Bundle bundle = new Bundle();
-                                bundle.putSerializable("object", listBean);
-                                intent.putExtras(bundle);
-                                mContext.startActivity(intent);
+//                                Toast.makeText(mContext, "点击评论内容" + listBean.getImage().getThumbnail_small().get(0), Toast.LENGTH_SHORT).show();
+//                                Intent intent = new Intent(mContext, DetialImageActivity.class);
+//                                intent.putExtra("imageurl", listBean.getImage().getThumbnail_small().get(0));
+//                                intent.putExtra("position", listBean.getId());
+//                                intent.putExtra("name", listBean.getU().getName());
+//                                intent.putExtra("time", listBean.getPasstime());
+//                                intent.putExtra("text", listBean.getText());
+//                                intent.putExtra("image", listBean.getU().getHeader().get(0));
+//                                Bundle bundle = new Bundle();
+//                                bundle.putSerializable("object", listBean);
+//                                intent.putExtras(bundle);
+//                                mContext.startActivity(intent);
 
                             }
                         }, topCommentsBean.getU().getName().length() + 1, comment.length(), Spanned.SPAN_INCLUSIVE_INCLUSIVE);
@@ -463,19 +464,19 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter {
                 //设置评论区不可见
                 layout.setVisibility(View.GONE);
             }
-            final String s = listBean.getImage().getThumbnail_small().get(0);
+//            final String s = listBean.getImage().getThumbnail_small().get(0);
             image.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     Intent intent = new Intent(mContext, PhotoShow.class);
-                    intent.putExtra("imageurl", listBean.getImage().getThumbnail_small().get(0));
+//                    intent.putExtra("imageurl", listBean.getImage().getThumbnail_small().get(0));
                     mContext.startActivity(intent);
                 }
             });
             textNews.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-//                    showShare();
+                    showShare();
                 }
             });
 
@@ -484,7 +485,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter {
                 public void onClick(View v) {
                     Intent intent  = new Intent(mContext,ListViewActivity.class);
                     Bundle bundle = new Bundle();
-                    bundle.putSerializable("object",listBean);
+                    bundle.putSerializable("object", (Serializable) listBean);
                     intent.putExtras(bundle);
                     mContext.startActivity(intent);
                 }
@@ -524,7 +525,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter {
             ButterKnife.inject(this, itemView);
         }
 
-        public void setData(final CommonBean.ListBean listBean) {
+        public void setData(final TieZiBean.ListBean listBean) {
             titleBar.setText(listBean.getU().getName());
             texttime.setText(listBean.getPasstime());
             Glide.with(mContext).load(listBean.getU().getHeader().get(0)).transform(new GlideCircleTransform(mContext)).into(iconImageView);
@@ -534,8 +535,8 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter {
             textNews.setText(listBean.getForward() + "");
             textZhuan.setText(listBean.getStatus() + "");
 
-            Log.e("TAG", "---><-----" + listBean.getHtml().getThumbnail().get(0));
-            Glide.with(mContext).load(listBean.getHtml().getThumbnail().get(1)).into(image);
+//            Log.e("TAG", "---><-----" + listBean.getHtml().getThumbnail().get(0));
+//            Glide.with(mContext).load(listBean.getHtml().getThumbnail().get(1)).into(image);
 
 
             //设置评论区
@@ -544,11 +545,11 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter {
                 //设置评论区可见
                 layout.setVisibility(View.VISIBLE);
                 layout.removeAllViews();
-                List<CommonBean.ListBean.TopCommentsBean> top_comments = listBean.getTop_comments();
+                List<TieZiBean.ListBean.TopCommentsBean> top_comments = listBean.getTop_comments();
                 for (int i = 0; i < top_comments.size(); i++) {
                     TextView textview = new TextView(mContext);
 //                    TextView tv_comment_list = (TextView) UIUtils.getView(R.layout.tv_comment_list);
-                    final CommonBean.ListBean.TopCommentsBean topCommentsBean = top_comments.get(i);
+                    final TieZiBean.ListBean.TopCommentsBean topCommentsBean = top_comments.get(i);
                     if (!TextUtils.isEmpty(topCommentsBean.getContent()) && !TextUtils.isEmpty(topCommentsBean.getU().getName())) {
                         //获取评论的用户名和评论内容
                         String comment = topCommentsBean.getU().getName() + " :  " + topCommentsBean.getContent();
@@ -603,7 +604,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter {
                                 intent.putExtra("text", listBean.getText());
                                 intent.putExtra("image", listBean.getU().getHeader().get(0));
                                 Bundle bundle = new Bundle();
-                                bundle.putSerializable("object", listBean);
+                                bundle.putSerializable("object", (Serializable) listBean);
                                 intent.putExtras(bundle);
                                 mContext.startActivity(intent);
 
@@ -629,7 +630,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter {
             textNews.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-//                    showShare();
+                    showShare();
                 }
             });
             titleBar.setOnClickListener(new View.OnClickListener() {
@@ -637,7 +638,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter {
                 public void onClick(View v) {
                     Intent intent  = new Intent(mContext,ListViewActivity.class);
                     Bundle bundle = new Bundle();
-                    bundle.putSerializable("object",listBean);
+                    bundle.putSerializable("object", (Serializable) listBean);
                     intent.putExtras(bundle);
                     mContext.startActivity(intent);
                 }
@@ -677,7 +678,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter {
             ButterKnife.inject(this, itemView);
         }
 
-        public void setData(final CommonBean.ListBean listBean) {
+        public void setData(final TieZiBean.ListBean listBean) {
             titleBar.setText(listBean.getU().getName());
             texttime.setText(listBean.getPasstime());
             Glide.with(mContext).load(listBean.getU().getHeader().get(0)).transform(new GlideCircleTransform(mContext)).into(iconImageView);
@@ -687,16 +688,16 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter {
             textNews.setText(listBean.getForward() + "");
             textZhuan.setText(listBean.getStatus() + "");
             //设置评论区
-            Glide.with(mContext).load(listBean.getGif().getGif_thumbnail().get(0)).into(image);
+//            Glide.with(mContext).load(listBean.getGif().getGif_thumbnail().get(0)).into(image);
             if (listBean.getTop_comments() != null && listBean.getTop_comments() != null && listBean.getTop_comments().size() > 0) {
                 //设置评论区可见
                 layout.setVisibility(View.VISIBLE);
                 layout.removeAllViews();
-                List<CommonBean.ListBean.TopCommentsBean> top_comments = listBean.getTop_comments();
+                List<TieZiBean.ListBean.TopCommentsBean> top_comments = listBean.getTop_comments();
                 for (int i = 0; i < top_comments.size(); i++) {
                     TextView textview = new TextView(mContext);
 //                    TextView tv_comment_list = (TextView) UIUtils.getView(R.layout.tv_comment_list);
-                    final CommonBean.ListBean.TopCommentsBean topCommentsBean = top_comments.get(i);
+                    final TieZiBean.ListBean.TopCommentsBean topCommentsBean = top_comments.get(i);
                     if (!TextUtils.isEmpty(topCommentsBean.getContent()) && !TextUtils.isEmpty(topCommentsBean.getU().getName())) {
                         //获取评论的用户名和评论内容
                         String comment = topCommentsBean.getU().getName() + " :  " + topCommentsBean.getContent();
@@ -751,7 +752,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter {
                                 intent.putExtra("text", listBean.getText());
                                 intent.putExtra("image", listBean.getU().getHeader().get(0));
                                 Bundle bundle = new Bundle();
-                                bundle.putSerializable("object", listBean);
+                                bundle.putSerializable("object", (Serializable) listBean);
                                 intent.putExtras(bundle);
                                 mContext.startActivity(intent);
 
@@ -777,7 +778,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter {
             textNews.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-//                    showShare();
+                    showShare();
                 }
             });
             titleBar.setOnClickListener(new View.OnClickListener() {
@@ -785,7 +786,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter {
                 public void onClick(View v) {
                     Intent intent  = new Intent(mContext,ListViewActivity.class);
                     Bundle bundle = new Bundle();
-                    bundle.putSerializable("object",listBean);
+                    bundle.putSerializable("object", (Serializable) listBean);
                     intent.putExtras(bundle);
                     mContext.startActivity(intent);
                 }
@@ -822,7 +823,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter {
             ButterKnife.inject(this, itemView);
         }
 
-        public void setData(final CommonBean.ListBean listBean) {
+        public void setData(final TieZiBean.ListBean listBean) {
             titleBar.setText(listBean.getU().getName());
             texttime.setText(listBean.getPasstime());
             Glide.with(mContext).load(listBean.getU().getHeader().get(0)).transform(new GlideCircleTransform(mContext)).into(iconImageView);
@@ -837,11 +838,11 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter {
                 //设置评论区可见
                 layout.setVisibility(View.VISIBLE);
                 layout.removeAllViews();
-                List<CommonBean.ListBean.TopCommentsBean> top_comments = listBean.getTop_comments();
+                List<TieZiBean.ListBean.TopCommentsBean> top_comments = listBean.getTop_comments();
                 for (int i = 0; i < top_comments.size(); i++) {
                     TextView textview = new TextView(mContext);
 //                    TextView tv_comment_list = (TextView) UIUtils.getView(R.layout.tv_comment_list);
-                    final CommonBean.ListBean.TopCommentsBean topCommentsBean = top_comments.get(i);
+                    final TieZiBean.ListBean.TopCommentsBean topCommentsBean = top_comments.get(i);
                     if (!TextUtils.isEmpty(topCommentsBean.getContent()) && !TextUtils.isEmpty(topCommentsBean.getU().getName())) {
                         //获取评论的用户名和评论内容
                         String comment = topCommentsBean.getU().getName() + " :  " + topCommentsBean.getContent();
@@ -896,7 +897,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter {
                                 intent.putExtra("text", listBean.getText());
                                 intent.putExtra("image", listBean.getU().getHeader().get(0));
                                 Bundle bundle = new Bundle();
-                                bundle.putSerializable("object", listBean);
+                                bundle.putSerializable("object", (Serializable) listBean);
                                 intent.putExtras(bundle);
                                 mContext.startActivity(intent);
 
@@ -923,7 +924,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter {
             textNews.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-//                    showShare();
+                    showShare();
                 }
             });
             titleBar.setOnClickListener(new View.OnClickListener() {
@@ -931,7 +932,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter {
                 public void onClick(View v) {
                     Intent intent  = new Intent(mContext,ListViewActivity.class);
                     Bundle bundle = new Bundle();
-                    bundle.putSerializable("object",listBean);
+                    bundle.putSerializable("object", (Serializable) listBean);
                     intent.putExtras(bundle);
                     mContext.startActivity(intent);
                 }
@@ -973,7 +974,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter {
             ButterKnife.inject(this, itemView);
         }
 
-        public void setData(final CommonBean.ListBean listBean) {
+        public void setData(final TieZiBean.ListBean listBean) {
             titleBar.setText(listBean.getU().getName());
             texttime.setText(listBean.getPasstime());
             Glide.with(mContext).load(listBean.getU().getHeader().get(0)).transform(new GlideCircleTransform(mContext)).into(iconImageView);
@@ -1001,11 +1002,11 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter {
                 //设置评论区可见
                 layout.setVisibility(View.VISIBLE);
                 layout.removeAllViews();
-                List<CommonBean.ListBean.TopCommentsBean> top_comments = listBean.getTop_comments();
+                List<TieZiBean.ListBean.TopCommentsBean> top_comments = listBean.getTop_comments();
                 for (int i = 0; i < top_comments.size(); i++) {
                     TextView textview = new TextView(mContext);
 //                    TextView tv_comment_list = (TextView) UIUtils.getView(R.layout.tv_comment_list);
-                    final CommonBean.ListBean.TopCommentsBean topCommentsBean = top_comments.get(i);
+                    final TieZiBean.ListBean.TopCommentsBean topCommentsBean = top_comments.get(i);
                     if (!TextUtils.isEmpty(topCommentsBean.getContent()) && !TextUtils.isEmpty(topCommentsBean.getU().getName())) {
                         //获取评论的用户名和评论内容
                         String comment = topCommentsBean.getU().getName() + " :  " + topCommentsBean.getContent();
@@ -1082,7 +1083,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter {
             textNews.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-//                    showShare();
+                    showShare();
                 }
             });
             titleBar.setOnClickListener(new View.OnClickListener() {
@@ -1090,7 +1091,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter {
                 public void onClick(View v) {
                     Intent intent  = new Intent(mContext,ListViewActivity.class);
                     Bundle bundle = new Bundle();
-                    bundle.putSerializable("object",listBean);
+                    bundle.putSerializable("object", (Serializable) listBean);
                     intent.putExtras(bundle);
                     mContext.startActivity(intent);
                 }

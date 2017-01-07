@@ -59,47 +59,91 @@ public class ContantUtils {
     public static final String NEWSPOST_NET_HOT = "http://s.budejie.com/topic/tag-topic/3096/new/budejie-android-6.6.3/0-20.json";
     //     详情界面
     public static final String NEWSPOST_DETIAL = "http://c.api.budejie.com/topic/comment_list/22860808/0/budejie-android-6.6.3/0-20.json";
-/**
- * 我的URL
- * 中间的网形格数据
- */
-    public  static final String MINE_GRID  ="http://s.budejie.com/op/square2/budejie-android-6.6.3/tencentyingyongbao/0-\n"+"\n" + "100.json\n";
-//     内容贡献榜
-    public static  final  String MINE_CONTRIBUTE = "http://m.budejie.com/user/credit.html?\n" +
-        "\n" +
-        "from=singlemessage&isappinstalled=0&ver=6.6.3&client=android&market=tencentyingy\n" +
-        "\n" +
-        "ongbao&udid=null&appname=baisibudejie&mac=5c:f7:c3:51:77:14&time=1482932498863&r\n" +
-        "\n" +
-        "untimecan=1\n";
-//    排行榜
-    public  static  final  String MINE_CHART = "http://s.budejie.com/topic/top-topic/1/day/forward/budejie-android-6.6.3/0-\n" +
-        "\n" +
-        "20.json\n";
-//       新闻头条
-    public  static  final  String MINE_NEWS = "http://m.9wuli.com/sdkweb/?\n" +
-        "\n" +
-        "appId=dfb3405cd7e43be149e1c6679e4e189d&appSecret=35925174bc62732bbbc82f1a1a571ed\n" +
-        "\n" +
-        "e&navstyle=a&ver=6.6.3&client=android&market=tencentyingyongbao&udid=null&appnam\n" +
-        "\n" +
-        "e=baisibudejie&mac=5c:f7:c3:51:77:14&time=1482932368803&runtimecan=1\n";
-//       推荐订阅
-    public  static final String MINE_GROOM = "http://d.api.budejie.com/tag/subscribe/budejie-android-6.6.3.json";
-//            推荐订阅的数据
-    public static final String MINE_GROOM_DATA ="http://s.budejie.com/topic/tag-topic/42835/hot/budejie-android-6.6.3/0-20.json";
+    /**
+     * 我的URL
+     * 中间的网形格数据
+     */
+    public static final String MINE_GRID = "http://s.budejie.com/op/square2/budejie-android-6.6.3/tencentyingyongbao/0-\n" + "\n" + "100.json\n";
+    //     内容贡献榜
+    public static final String MINE_CONTRIBUTE = "http://m.budejie.com/user/credit.html?\n" +
+            "\n" +
+            "from=singlemessage&isappinstalled=0&ver=6.6.3&client=android&market=tencentyingy\n" +
+            "\n" +
+            "ongbao&udid=null&appname=baisibudejie&mac=5c:f7:c3:51:77:14&time=1482932498863&r\n" +
+            "\n" +
+            "untimecan=1\n";
+    //    排行榜
+    public static final String MINE_CHART = "http://s.budejie.com/topic/top-topic/1/day/forward/budejie-android-6.6.3/0-\n" +
+            "\n" +
+            "20.json\n";
+    //       新闻头条
+    public static final String MINE_NEWS = "http://m.9wuli.com/sdkweb/?\n" +
+            "\n" +
+            "appId=dfb3405cd7e43be149e1c6679e4e189d&appSecret=35925174bc62732bbbc82f1a1a571ed\n" +
+            "\n" +
+            "e&navstyle=a&ver=6.6.3&client=android&market=tencentyingyongbao&udid=null&appnam\n" +
+            "\n" +
+            "e=baisibudejie&mac=5c:f7:c3:51:77:14&time=1482932368803&runtimecan=1\n";
+    //       推荐订阅
+    public static final String MINE_GROOM = "http://d.api.budejie.com/tag/subscribe/budejie-android-6.6.3.json";
+    //            推荐订阅的数据
+    public static final String MINE_GROOM_DATA = "http://s.budejie.com/topic/tag-topic/42835/hot/budejie-android-6.6.3/0-20.json";
 
 
+    public static final String LEFTLISTVIEW = "http://d.api.budejie.com/subscribe/category/budejie-android-6.6.3/0-20.json";
     /**
      * 详情页面的数据
      */
-    public  static  final String DETIAL_BASE = "http://c.api.budejie.com/topic/comment_list/";
+    public static final String DETIAL_BASE = "http://c.api.budejie.com/topic/comment_list/";
 
 
-    public  static  final String FOOT_URL = "/0/budejie-android-6.6.3/0-20.json";
+    public static final String FOOT_URL = "/0/budejie-android-6.6.3/0-20.json";
 
     /**
      * 各个详情界面
      */
-    public  static  final String TUIJIAN = "http://c.api.budejie.com/topic/comment_list/22958696/0/budejie-android-6.6.3/0-20.json";
+    public static final String TUIJIAN = "http://c.api.budejie.com/topic/comment_list/22958696/0/budejie-android-6.6.3/0-20.json";
+
+
+    /**
+     * 推荐关注的详情界面
+     */
+    public static final String FOLLOW_BASE = "http://d.api.budejie.com/subscribe/user/";
+
+
+    public static final String FOLLOW_FOOT_URL = "/0/budejie-android-6.6.3/1-20.json";
+
+    /**
+     * 帖子
+     * http://s.budejie.com/topic/user-topic/17800244/1/desc/budejie-android-6.6.3/0-20.json
+     */
+    public static final String PERSONAL_TIEZI_BASE = "http://s.budejie.com/topic/user-topic/";
+
+
+    public static final String PERSONAL_TIEZI_FOOT_URL = "/1/desc/budejie-android-6.6.3/0-20.json";
+    /**
+     * 分享
+     * http://s.budejie.com/topic/share-topic/17800244/budejie-android-6.6.3/0-20.json
+     */
+
+    public static final String PERSONAL_SHARE_BASE = "http://s.budejie.com/topic/share-topic/";
+
+
+    public static final String PERSONAL_SHARE_FOOT_URL = "/budejie-android-6.6.3/0-20.json";
+
+    /**
+     * 评论
+     * http://s.budejie.com/comment/user-comment/17800244/budejie-android-6.6.3/0-20.json
+     */
+
+    public static final String PERSONAL_PINGLUN_BASE = "http://s.budejie.com/comment/user-comment/";
+
+
+    public static final String PERSONAL_PINGLUN_FOOT_URL = "/budejie-android-6.6.3/0-20.json";
+
+    public static final String TUIJINA_FOLLOW = "http://api.budejie.com/api/api_open.php?market=c-oppo&last_coord=0&udid=867789027284645&a=friend_recommend&appname=baisibudejie&last_flag=list&uid=19949769&c=user&os=4.4.4&client=android&visiting=19949769&pre=50&mac=2c%3A5b%3Ab8%3A75%3Aa2%3Abc&ver=6.6.3";
+
+
+    public static final String PERSONAL_HEAD = "http://d.api.budejie.com/user/profile?market=c-oppo&udid=867789027284645&appname=baisibudejie&os=4.4.4&client=android&visiting=19949769&userid=";
+    public static final String PERSONAL_FOOT = "&mac=2c%3A5b%3Ab8%3A75%3Aa2%3Abc&ver=6.6.3";
 }

@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="70dp"
+    android:layout_marginTop="50dp"
+    android:clipChildren="false">
+
+    <TextView
+        android:text="13654粉丝"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="20dp"
+        android:id="@+id/fans"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@+id/imageView2" />
+    <TextView
+        android:text="0关注"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="100dp"
+        android:id="@+id/guanzhu"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@+id/imageView2" />
+
+    <TextView
+        android:text="等级：LV17"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="150dp"
+        android:id="@+id/level"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@+id/imageView2" />
+
+    <TextView
+        android:id="@+id/di"
+        android:layout_marginTop="40dp"
+        android:layout_marginLeft="30dp"
+        android:layout_width="30dp"
+        android:layout_height="30dp" />
+
+
+    <TextView
+        android:gravity="center"
+        android:background="@drawable/guanzhu_selector"
+        android:text="+ 关注"
+        android:textColor="#ff0000"
+        android:id="@+id/jiaguanzhu"
+        android:layout_toRightOf="@+id/imageView2"
+        android:layout_below="@+id/fans"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="8dp"
+        android:layout_width="250dp"
+        android:layout_marginRight="20dp"
+        android:layout_height="35dp" />
+
+    <ImageView
+        android:layout_marginLeft="10dp"
+        android:id="@+id/imageView2"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_gravity="bottom"
+        android:background="@drawable/send_picture"
+        android:layout_alignBottom="@+id/di"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+</RelativeLayout>

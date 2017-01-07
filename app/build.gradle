@@ -5,7 +5,7 @@ android {
     buildToolsVersion "25.0.2"
     defaultConfig {
         applicationId "com.xiaoyu.rewritebaisi"
-        minSdkVersion 15
+        minSdkVersion 16
         targetSdkVersion 25
         versionCode 1
         versionName "1.0"
@@ -55,6 +55,7 @@ dependencies {
     compile 'pub.devrel:easypermissions:0.2.0'
     compile 'cn.yipianfengye.android:zxing-library:2.1'
     compile project(':ViewPagerIndicator')
+    compile 'com.zhy:percent-support-extends:1.0.1'
     compile files('libs/MobCommons-2016.1222.1756.jar')
     compile files('libs/MobTools-2016.1222.1756.jar')
     compile files('libs/ShareSDK-Core-2.8.0.jar')

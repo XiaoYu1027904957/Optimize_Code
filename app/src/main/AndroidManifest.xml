@@ -175,7 +175,11 @@
             android:value=" 1a8540739c2d0" />
 
         <activity android:name=".app.ShowAnimationActivity" />
-        <activity android:name=".app.WeiXinActivity"></activity>
+        <activity android:name=".app.WeiXinActivity" />
+        <activity android:name=".app.ShowEditActivity" />
+        <activity android:name=".app.FollowOtherActivity" />
+        <activity android:name=".app.HomePagerActivity" />
+        <activity android:name=".app.ListViewActivity"></activity>
     </application>
 
 </manifest>

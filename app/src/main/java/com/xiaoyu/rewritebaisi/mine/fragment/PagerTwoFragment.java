@@ -66,15 +66,18 @@ public class PagerTwoFragment extends BaseFragment {
                         Toast.makeText(mContext, "传世H5", Toast.LENGTH_SHORT).show();
                         break;
                     case 4:
-                        Toast.makeText(mContext, "下载视频", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(mContext, "百思交友", Toast.LENGTH_SHORT).show();
                         break;
                     case 5:
-                        Toast.makeText(mContext, "头条新闻", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(mContext, "下载视频", Toast.LENGTH_SHORT).show();
                         break;
                     case 6:
-                        Toast.makeText(mContext, "爬塔三国", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(mContext, "头条新闻", Toast.LENGTH_SHORT).show();
                         break;
                     case 7:
+                        Toast.makeText(mContext, "爬塔三国", Toast.LENGTH_SHORT).show();
+                        break;
+                    case 8:
                         Toast.makeText(mContext, "更多", Toast.LENGTH_SHORT).show();
                         break;
 
