@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/FlycoTabLayout_Lib/FlycoTabLayout_Lib.iml" filepath="$PROJECT_DIR$/FlycoTabLayout_Lib/FlycoTabLayout_Lib.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Imagelibrary/Imagelibrary.iml" filepath="$PROJECT_DIR$/Imagelibrary/Imagelibrary.iml" />
       <module fileurl="file://$PROJECT_DIR$/MaterialRefreshLayout-masterlibrary/MaterialRefreshLayout-masterlibrary.iml" filepath="$PROJECT_DIR$/MaterialRefreshLayout-masterlibrary/MaterialRefreshLayout-masterlibrary.iml" />
       <module fileurl="file://$PROJECT_DIR$/ReWriteBaiSi.iml" filepath="$PROJECT_DIR$/ReWriteBaiSi.iml" />
       <module fileurl="file://$PROJECT_DIR$/ViewPagerIndicator/ViewPagerIndicator.iml" filepath="$PROJECT_DIR$/ViewPagerIndicator/ViewPagerIndicator.iml" />

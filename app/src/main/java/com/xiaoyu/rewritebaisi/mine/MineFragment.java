@@ -1,7 +1,6 @@
 package com.xiaoyu.rewritebaisi.mine;
 
 import android.content.Intent;
-import android.os.Bundle;
 import android.support.v4.view.ViewPager;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -17,6 +16,7 @@ import com.bumptech.glide.Glide;
 import com.viewpagerindicator.CirclePageIndicator;
 import com.xiaoyu.rewritebaisi.R;
 import com.xiaoyu.rewritebaisi.app.LoginActivity;
+import com.xiaoyu.rewritebaisi.app.ShowTuijianActivity;
 import com.xiaoyu.rewritebaisi.base.BaseFragment;
 import com.xiaoyu.rewritebaisi.base.GetNet;
 import com.xiaoyu.rewritebaisi.base.OnGetListener;
@@ -107,24 +107,11 @@ public class MineFragment extends BaseFragment {
         viewpager.setOffscreenPageLimit(0);
         viewpager.setAdapter(viewPageradapter);
         circleBarner.setViewPager(viewpager);
+
     }
 
     private TuijianBean processData(String json) {
         return JSON.parseObject(json, TuijianBean.class);
-    }
-
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        // TODO: inflate a fragment view
-        View rootView = super.onCreateView(inflater, container, savedInstanceState);
-        ButterKnife.inject(this, rootView);
-        return rootView;
-    }
-
-    @Override
-    public void onDestroyView() {
-        super.onDestroyView();
-        ButterKnife.reset(this);
     }
 
 
@@ -163,10 +150,22 @@ public class MineFragment extends BaseFragment {
             holder.mineDignyue.setText(recTagsBean.getSub_number() + "人订阅");
 //           总贴数
             holder.mineSum.setText("总帖数" + recTagsBean.getPost_num());
+
+            initListener(convertView);
             return convertView;
         }
 
 
+    }
+
+    private void initListener(View convertView) {
+        convertView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(mContext, ShowTuijianActivity.class);
+                mContext.startActivity(intent);
+            }
+        });
     }
 
     static class ViewHolder {

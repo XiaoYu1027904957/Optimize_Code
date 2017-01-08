@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_show_tuijian"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.xiaoyu.rewritebaisi.app.ShowTuijianActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="40dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="不得姐体验馆"
+            android:textSize="20dp" />
+    </LinearLayout>
+
+    <com.cjj.MaterialRefreshLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/refresh"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:overlay="false"
+        app:progress_backgroud_color="#FFFAFAFA"
+        app:progress_colors="@array/material_colors"
+        app:progress_show_arrow="true"
+        app:progress_show_circle_backgroud="true"
+        app:wave_color="#20ff2020"
+        app:wave_height_type="normal"
+        app:wave_show="true">
+
+    <ListView
+        android:id="@+id/mine_listView_show"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#ff0000" />
+    </com.cjj.MaterialRefreshLayout>
+</LinearLayout>

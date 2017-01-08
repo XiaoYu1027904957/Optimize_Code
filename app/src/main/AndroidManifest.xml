@@ -179,7 +179,9 @@
         <activity android:name=".app.ShowEditActivity" />
         <activity android:name=".app.FollowOtherActivity" />
         <activity android:name=".app.HomePagerActivity" />
-        <activity android:name=".app.ListViewActivity"></activity>
+        <activity android:name=".app.ListViewActivity" />
+        <activity android:name=".app.ShowTuijianActivity" />
+        <activity android:name=".app.ImageDisplayActivity"></activity>
     </application>
 
 </manifest>

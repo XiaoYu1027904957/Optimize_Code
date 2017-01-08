@@ -8,12 +8,12 @@
         "source": "C:\\AsProgram\\ReWriteBaiSi\\MaterialRefreshLayout-masterlibrary\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.1.1\\res\\layout\\abc_list_menu_item_icon.xml"
     },
     {
-        "merged": "C:\\AsProgram\\ReWriteBaiSi\\MaterialRefreshLayout-masterlibrary\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\abc_screen_simple_overlay_action_mode.xml",
-        "source": "C:\\AsProgram\\ReWriteBaiSi\\MaterialRefreshLayout-masterlibrary\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.1.1\\res\\layout\\abc_screen_simple_overlay_action_mode.xml"
-    },
-    {
         "merged": "C:\\AsProgram\\ReWriteBaiSi\\MaterialRefreshLayout-masterlibrary\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\abc_list_menu_item_radio.xml",
         "source": "C:\\AsProgram\\ReWriteBaiSi\\MaterialRefreshLayout-masterlibrary\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.1.1\\res\\layout\\abc_list_menu_item_radio.xml"
+    },
+    {
+        "merged": "C:\\AsProgram\\ReWriteBaiSi\\MaterialRefreshLayout-masterlibrary\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\abc_screen_simple_overlay_action_mode.xml",
+        "source": "C:\\AsProgram\\ReWriteBaiSi\\MaterialRefreshLayout-masterlibrary\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.1.1\\res\\layout\\abc_screen_simple_overlay_action_mode.xml"
     },
     {
         "merged": "C:\\AsProgram\\ReWriteBaiSi\\MaterialRefreshLayout-masterlibrary\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\abc_dialog_title_material.xml",
@@ -44,12 +44,12 @@
         "source": "C:\\AsProgram\\ReWriteBaiSi\\MaterialRefreshLayout-masterlibrary\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.1.1\\res\\layout\\notification_media_action.xml"
     },
     {
-        "merged": "C:\\AsProgram\\ReWriteBaiSi\\MaterialRefreshLayout-masterlibrary\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\abc_action_mode_bar.xml",
-        "source": "C:\\AsProgram\\ReWriteBaiSi\\MaterialRefreshLayout-masterlibrary\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.1.1\\res\\layout\\abc_action_mode_bar.xml"
-    },
-    {
         "merged": "C:\\AsProgram\\ReWriteBaiSi\\MaterialRefreshLayout-masterlibrary\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\abc_search_view.xml",
         "source": "C:\\AsProgram\\ReWriteBaiSi\\MaterialRefreshLayout-masterlibrary\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.1.1\\res\\layout\\abc_search_view.xml"
+    },
+    {
+        "merged": "C:\\AsProgram\\ReWriteBaiSi\\MaterialRefreshLayout-masterlibrary\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\abc_action_mode_bar.xml",
+        "source": "C:\\AsProgram\\ReWriteBaiSi\\MaterialRefreshLayout-masterlibrary\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.1.1\\res\\layout\\abc_action_mode_bar.xml"
     },
     {
         "merged": "C:\\AsProgram\\ReWriteBaiSi\\MaterialRefreshLayout-masterlibrary\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\abc_action_menu_item_layout.xml",

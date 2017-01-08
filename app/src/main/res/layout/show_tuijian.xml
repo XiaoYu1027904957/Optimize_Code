@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/activity_show_tuijian"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+
+    <ImageView
+        android:id="@+id/image"
+        android:layout_width="match_parent"
+        android:layout_height="180dp"
+        android:background="@drawable/text" />
+
+    <TextView
+
+        android:id="@+id/mine_text"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:text="那也是一个夏日，斑驳的墙壁上同样有一只紫色蝴蝶在有节奏的振动着翅膀，它是随着夏风飞过窗口落在墙上的。儿子的眼睛里充满了欣喜，于是，屋子里，母子俩便一起蹑手蹑脚的走向蝴蝶，儿子灵活的小手一下子便按住了那只紫色蝴蝶。就在这时，儿子胖乎乎的小手又迅速抽离了，紫色蝴蝶在屋子上空盘旋了一会儿，便从窗口飞了出去，斑驳的墙壁上留下了鲜血，那血，红的有些刺眼。那是儿子右手留下的，原来，墙上别着一根针。她心疼的抱着撕心裂肺痛哭的儿子，儿子的眼睛依然留恋的看着窗口。她流着眼泪嗔怪着自己……" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="5dp"
+        android:background="#44000000" />
+
+    <LinearLayout
+        android:id="@+id/show_imageView"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:orientation="horizontal"></LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="5dp"
+        android:layout_below="@+id/mine_text"
+        android:background="#44000000" />
+</LinearLayout>

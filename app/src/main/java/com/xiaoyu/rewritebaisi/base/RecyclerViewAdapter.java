@@ -186,7 +186,6 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter {
         LinearLayout layout_show;
 
 
-
         public VideoViewHolder(View itemView) {
             super(itemView);
             ButterKnife.inject(this, itemView);
@@ -318,14 +317,13 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter {
             titleBar.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Intent intent  = new Intent(mContext,ListViewActivity.class);
+                    Intent intent = new Intent(mContext, ListViewActivity.class);
                     Bundle bundle = new Bundle();
-                    bundle.putSerializable("object",listBean);
+                    bundle.putSerializable("object", listBean);
                     intent.putExtras(bundle);
                     mContext.startActivity(intent);
                 }
             });
-
 
 
         }
@@ -463,12 +461,12 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter {
                 //设置评论区不可见
                 layout.setVisibility(View.GONE);
             }
-            final String s = listBean.getImage().getThumbnail_small().get(0);
+            final String s = listBean.getImage().getBig().get(0);
             image.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     Intent intent = new Intent(mContext, PhotoShow.class);
-                    intent.putExtra("imageurl", listBean.getImage().getThumbnail_small().get(0));
+                    intent.putExtra("imageurl", listBean.getImage().getBig().get(0));
                     mContext.startActivity(intent);
                 }
             });
@@ -482,9 +480,9 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter {
             titleBar.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Intent intent  = new Intent(mContext,ListViewActivity.class);
+                    Intent intent = new Intent(mContext, ListViewActivity.class);
                     Bundle bundle = new Bundle();
-                    bundle.putSerializable("object",listBean);
+                    bundle.putSerializable("object", listBean);
                     intent.putExtras(bundle);
                     mContext.startActivity(intent);
                 }
@@ -635,9 +633,9 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter {
             titleBar.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Intent intent  = new Intent(mContext,ListViewActivity.class);
+                    Intent intent = new Intent(mContext, ListViewActivity.class);
                     Bundle bundle = new Bundle();
-                    bundle.putSerializable("object",listBean);
+                    bundle.putSerializable("object", listBean);
                     intent.putExtras(bundle);
                     mContext.startActivity(intent);
                 }
@@ -783,9 +781,9 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter {
             titleBar.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Intent intent  = new Intent(mContext,ListViewActivity.class);
+                    Intent intent = new Intent(mContext, ListViewActivity.class);
                     Bundle bundle = new Bundle();
-                    bundle.putSerializable("object",listBean);
+                    bundle.putSerializable("object", listBean);
                     intent.putExtras(bundle);
                     mContext.startActivity(intent);
                 }
@@ -929,9 +927,9 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter {
             titleBar.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Intent intent  = new Intent(mContext,ListViewActivity.class);
+                    Intent intent = new Intent(mContext, ListViewActivity.class);
                     Bundle bundle = new Bundle();
-                    bundle.putSerializable("object",listBean);
+                    bundle.putSerializable("object", listBean);
                     intent.putExtras(bundle);
                     mContext.startActivity(intent);
                 }
@@ -1088,11 +1086,12 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter {
             titleBar.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Intent intent  = new Intent(mContext,ListViewActivity.class);
+                    Intent intent = new Intent(mContext, ListViewActivity.class);
                     Bundle bundle = new Bundle();
-                    bundle.putSerializable("object",listBean);
+                    bundle.putSerializable("object", listBean);
                     intent.putExtras(bundle);
                     mContext.startActivity(intent);
+
                 }
             });
         }
